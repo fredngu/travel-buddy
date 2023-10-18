@@ -3,6 +3,7 @@ import axios from 'axios';
 import './App.css';
 import LoginButton from './api/login';
 import { Auth0Provider } from '@auth0/auth0-react';
+import LogoutButton from './api/logout';
 
 class App extends Component {
   constructor(props) {
@@ -36,6 +37,7 @@ class App extends Component {
             }}
           >
             <LoginButton />
+            <LogoutButton />
           </Auth0Provider>
         <h1>{ this.state.message }</h1>
         <button onClick={this.fetchData} >
