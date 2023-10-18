@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
+import LoginButton from './api/login';
+import { Auth0Provider } from '@auth0/auth0-react';
+import LogoutButton from './api/logout';
+import Profile from './api/profile';
 
 class App extends Component {
   constructor(props) {
@@ -26,6 +30,17 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+          <Auth0Provider
+            domain="dev-6jhms23po3hoo2lj.us.auth0.com"
+            clientId="TybkdIkTe6Yd8FMUl78uDXEy6dREGsry"
+            authorizationParams={{
+              redirect_uri: window.location.origin
+            }}
+          >
+            <LoginButton />
+            <LogoutButton />
+            <Profile />
+          </Auth0Provider>
         <h1>{ this.state.message }</h1>
         <button onClick={this.fetchData} >
           Fetch Data
