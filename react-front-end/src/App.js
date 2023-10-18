@@ -4,6 +4,7 @@ import './App.css';
 import LoginButton from './api/login';
 import { Auth0Provider } from '@auth0/auth0-react';
 import LogoutButton from './api/logout';
+import Profile from './api/profile';
 
 class App extends Component {
   constructor(props) {
@@ -38,6 +39,7 @@ class App extends Component {
           >
             <LoginButton />
             <LogoutButton />
+            <Profile />
           </Auth0Provider>
         <h1>{ this.state.message }</h1>
         <button onClick={this.fetchData} >
