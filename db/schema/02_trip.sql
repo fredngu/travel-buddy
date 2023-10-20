@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS trip CASCADE;
 
 CREATE TABLE trip (
   trip_id SERIAL PRIMARY KEY,
-  name VARCHAR(255) NOT NULL,
+  trip_name VARCHAR(255) NOT NULL,
   user_id VARCHAR(255) REFERENCES user(user_id),
   city_name VARCHAR(255) NOT NULL,
   start_date DATE NOT NULL,
