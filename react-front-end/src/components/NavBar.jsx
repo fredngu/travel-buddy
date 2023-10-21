@@ -8,20 +8,27 @@ import Profile from '../api/profile';
 
 function NavBar() {
   return (
-    <div className="navbar">
-      <Auth0Provider
-        domain="dev-6jhms23po3hoo2lj.us.auth0.com"
-        clientId="TybkdIkTe6Yd8FMUl78uDXEy6dREGsry"
-        authorizationParams={{
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <ul>
+        <Auth0Provider
+          domain="dev-6jhms23po3hoo2lj.us.auth0.com"
+          clientId="TybkdIkTe6Yd8FMUl78uDXEy6dREGsry"
+          authorizationParams={{
           redirect_uri: window.location.origin
           }}
         >
-        <LoginButton />
-        <LogoutButton />
-        <Profile />
-      </Auth0Provider>
-      <h1>This is the Navigation Bar</h1>
-    </div>
+        <li className="nav-item">
+          <LoginButton />
+        </li>
+        <li className="nav-item">
+          <LogoutButton />
+        </li>
+        <li className="nav-item">
+          <Profile />
+        </li>
+          </Auth0Provider>
+        </ul>
+    </nav>
   );
 }
 

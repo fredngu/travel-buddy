@@ -7,7 +7,8 @@ const Profile = () => {
   if (isLoading) {
     return <div>Loading ...</div>;
   }
-
+  console.log(user)
+  //useEffect POST to route in backend /user
   return (
     isAuthenticated && (
       <div>
