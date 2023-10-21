@@ -30,9 +30,9 @@ App.get("/api/data", (req, res) => {
   //   message: "Seems to work!",
   // })
   const sqlInsert =
-    "INSERT INTO user (user_id, firstName, lastName, email, sub_id, home) VALUES (1, Paul, McA, paul@test.com, 1, Toronto  )";
+    "INSERT INTO traveller (traveller_id, firstName, lastName, email, sub_id, home) VALUES (1, Paul, McA, paul@test.com, 1, Toronto )";
   db.query(sqlInsert, (req, res) => {
-    console.log("user added");
+    console.log("Traveller added");
   });
 });
 
