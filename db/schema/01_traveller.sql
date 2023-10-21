@@ -6,5 +6,5 @@ CREATE TABLE traveller (
   lastName VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL,
   sub_id VARCHAR(255) NOT NULL,
-  home VARCHAR(255) NOT NULL
+  home VARCHAR(255)
 );
