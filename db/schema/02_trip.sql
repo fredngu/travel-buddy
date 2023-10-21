@@ -3,7 +3,7 @@ DROP TABLE IF EXISTS trip CASCADE;
 CREATE TABLE trip (
   trip_id SERIAL PRIMARY KEY,
   trip_name VARCHAR(255) NOT NULL,
-  traveller_id VARCHAR(255) REFERENCES traveller(traveller_id),
+  traveller_id INT REFERENCES traveller(traveller_id),
   city_name VARCHAR(255) NOT NULL,
   start_date DATE NOT NULL,
   end_date DATE NOT NULL,
@@ -11,5 +11,5 @@ CREATE TABLE trip (
   hotel_highest INTEGER NOT NULL,
   flight_lowest INTEGER NOT NULL,
   flight_highest INTEGER NOT NULL,
-  city_image_url VARCHAR(255) NOT NULL
+  city_image_url VARCHAR(2048) NOT NULL
 );
