@@ -3,6 +3,7 @@ import axios from 'axios';
 import './App.css';
 import NavBar from './components/NavBar';
 import { FlightList, Footer, Input } from './components';
+import Button from '@mui/material/Button'
 
 class App extends Component {
   constructor(props) {
@@ -33,7 +34,7 @@ class App extends Component {
       <div className="App">
         <NavBar />
         <h1>{this.state.message}</h1>
-        <button onClick={this.fetchData}>Fetch Data</button>
+        <Button variant="contained" onClick={this.fetchData}>Fetch Data</Button>
 
         {/* Handle search flights using API */}
         <div className='relative min-h-[100vh] dark:bg-gray-700 dark:text-white'>

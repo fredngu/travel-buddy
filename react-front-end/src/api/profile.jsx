@@ -1,13 +1,26 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import React, { useEffect }from "react";
+import React, { useEffect, useState }from "react";
 
 const Profile = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
+  const [ travellers, setTravellers ] = useState([]);
+
+  const getTravellers = async () => {
+    try {
+      const response = await fetch("http://localhost:3000/travellers")
+      const travellerData = await response.json()
+      setTravellers(travellerData)
+    } catch (err) {
+      console.error(err.message);
+    }
+  }
 
   useEffect(() => {
-    console.log('This is the useEffect from Profile')
+    getTravellers()
   }, []);
 
+  console.log(travellers);
+  
   if (isLoading) {
     return <div>Loading ...</div>;
   }
