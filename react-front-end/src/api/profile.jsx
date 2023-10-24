@@ -1,14 +1,17 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import React from "react";
+import React, { useEffect }from "react";
 
 const Profile = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
 
+  useEffect(() => {
+    console.log('This is the useEffect from Profile')
+  }, []);
+
   if (isLoading) {
     return <div>Loading ...</div>;
   }
-  console.log(user)
-  //useEffect POST to route in backend /user
+
   return (
     isAuthenticated && (
       <div>
