@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
 import NavBar from './components/NavBar';
-import { FlightList, Footer, Input } from './components';
+import Flight from './components/Flight';
 import Button from '@mui/material/Button'
 
 class App extends Component {
@@ -35,25 +35,7 @@ class App extends Component {
         <NavBar />
         <h1>{this.state.message}</h1>
         <Button variant="contained" onClick={this.fetchData}>Fetch Data</Button>
-
-        {/* Handle search flights using API */}
-        <div className='relative min-h-[100vh] dark:bg-gray-700 dark:text-white'>
-          <div className="pb-[2.5rem]">
-            <div className="md:px-12 ">
-              <Input
-                setFlightData={(data) => this.setState({ flightData: data })}
-                setIsLoading={(loading) => this.setState({ isLoading: loading })}
-              />
-            </div>
-          </div>
-          <FlightList
-            flightData={this.state.flightData}
-            isLoading={this.state.isLoading}
-          />
-          <div>
-            <Footer />
-          </div>
-        </div>
+        <Flight />
       </div>
     );
   }
