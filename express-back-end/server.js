@@ -29,6 +29,22 @@ App.get('/travellers', async (req, res) => {
   }
 })
 
+App.post('/travellers', async (req, res) => {
+  const user = req.body;
+  console.log(user)
+  const checkUser = await db.query('SELECT * FROM traveller WHERE sub_id = $1', [user.sub])
+  if (checkUser.rows.length === 0) {
+    const newUser = await db.query('INSERT INTO traveller(firstName, lastName, email, sub_id) VALUES($1, $2, $3, $4) RETURNING *', [
+      user.given_name,
+      user.family_name,
+      user.email,
+      user.sub
+    ])
+    res.send(newUser.rows)
+  }
+  res.send(checkUser.rows)
+})
+
 App.listen(PORT, () => {
   // eslint-disable-next-line no-console
   console.log(`Express seems to be listening on port ${PORT} so that's pretty good 👍`);
