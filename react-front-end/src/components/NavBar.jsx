@@ -4,6 +4,7 @@ import { Auth0Provider } from '@auth0/auth0-react';
 import LoginButton from '../api/login';
 import LogoutButton from '../api/logout';
 import Profile from '../api/profile';
+import Logo from '../images/TravelBuddyLogo.png';
 import '../styles/NavBar.scss';
 
 function NavBar() {
@@ -11,6 +12,7 @@ function NavBar() {
     <AppBar position="static">
       <Container>
         <Toolbar>
+          <img src={Logo} alt="Logo" className="logo" sx={{ maxWidth: 100, maxHeight: 50 }} />
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Travel Buddy
           </Typography>
