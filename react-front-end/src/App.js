@@ -4,8 +4,11 @@ import './App.css';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import Flight from './components/Flight';
+import LoginForm from './components/LoginForm';
 import HotelSearch from './components/hotels/HotelSearch';
 import Button from '@mui/material/Button';
+
+import heroImage from './images/hero-image.jpg';
 
 function App() {
   const [message, setMessage] = useState('Click the button to load data!');
@@ -54,6 +57,15 @@ function App() {
   return (
     <div className="App">
       <NavBar />
+      <div className="hero">
+      <img
+        src={heroImage}
+        alt="Hero"
+        className="img-fluid"
+        style={{ width: '100%', height: '600px' }}
+      />
+      </div>
+      <LoginForm />
       <h1>{message}</h1>
       <Button variant="contained" onClick={fetchData}>Fetch Data</Button>
       <Flight />
