@@ -1,86 +1,29 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 import './App.css';
 import NavBar from './components/NavBar';
-import Footer from './components/Footer';
-import Flight from './components/Flight';
 import LoginForm from './components/LoginForm';
-import HotelSearch from './components/hotels/HotelSearch';
-import Button from '@mui/material/Button';
+import HotelSearchPage from './components/hotels/HoteSearchPage';
 
 import heroImage from './images/hero-image.jpg';
+import logo from './images/TravelBuddyLogo.png';
 
 function App() {
-  const [message, setMessage] = useState('Click the button to load data!');
-  const [location, setLocation] = useState('');
-  const [coordinates, setCoordinates] = useState({ lat: 51.049999, lng: -114.066666 });
-
-  const fetchData = () => {
-    axios.get('/api/data')
-      .then((response) => {
-        console.log(response.data);
-        setMessage(response.data.message);
-      });
-  }
-
-  const handleLocationChange = (e) => {
-    setLocation(e.target.value);
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (location) {
-      const newCoordinates = await fetchCoordinates(location);
-      setCoordinates(newCoordinates);
-    }
-  };
-
-  const fetchCoordinates = async (location) => {
-    try {
-      const response = await fetch(
-        `https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`
-      );
-      const data = await response.json();
-      if (data.status === 'OK' && data.results.length > 0) {
-        const { lat, lng } = data.results[0].geometry.location;
-        return { lat, lng };
-      } else {
-        console.error('Location not found');
-        return coordinates;
-      }
-    } catch (error) {
-      console.error('Error fetching coordinates:', error);
-      return coordinates;
-    }
-  };
-
   return (
     <div className="App">
       <NavBar />
-      <div className="hero">
       <img
         src={heroImage}
         alt="Hero"
         className="img-fluid"
-        style={{ width: '100%', height: '600px' }}
+        style={{ width: '100%', height: '500px' }}
       />
-      </div>
-      <LoginForm />
-      <h1>{message}</h1>
-      <Button variant="contained" onClick={fetchData}>Fetch Data</Button>
-      <Flight />
-      <form onSubmit={handleSubmit}>
-        <input
-          className="input-field"
-          type="text"
-          placeholder="Enter location (e.g., city name)"
-          value={location}
-          onChange={handleLocationChange}
-        />
-        <button className="search-button" type="submit">Search</button>
-      </form>
-      <HotelSearch initialCenter={coordinates} />
-      <Footer />
+      <LoginForm />       
+      <img
+        src={logo}
+        alt="Log Travel Buddy"
+        className="img-fluid mx-auto my-4"
+      />
+      <HotelSearchPage />
     </div>
   );
 }
