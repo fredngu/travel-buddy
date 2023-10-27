@@ -1,7 +1,9 @@
 import './HotelSearch.css';
 import React, { Component } from 'react';
-import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
-import { getPriceRange } from '../utils/PriceUtils';
+import { Map, GoogleApiWrapper} from 'google-maps-react';
+import HotelCard from './HotelCard';
+import HotelMarker from './HotelMarker';
+import SelectedHotel from './SelectedHotel';
 
 const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
 
@@ -102,27 +104,7 @@ class HotelSearch extends Component {
         <div className="hotelList">
           <h2>Hotels Near Your Location:</h2>
           {visibleHotels.map((hotel) => (
-            <div key={hotel.place_id} className="hotelCard">
-              <div className="hotelImageContainer">
-                {hotel.photos && hotel.photos[0] ? (
-                  <img
-                    src={hotel.photos[0].getUrl()}
-                    alt="Hotel"
-                    className="hotelImage"
-                  />
-                ) : (
-                  <p>No Photo Available</p>
-                )}
-              </div>
-              <div className="hotelInfoContainer">
-                <h3 className="hotelName">{hotel.name}</h3>
-                <p className="hotelAddress">Address: {hotel.vicinity}</p>
-                <p className="hotelRating">Rating: {hotel.rating}</p>
-                <p className="hotelPrice">
-                  Price Range: {getPriceRange(hotel.price_level) || 'Not available (VISIT HOTEL WEBSITE)'}
-                </p>
-              </div>
-            </div>
+            <HotelCard key={hotel.place_id} hotel={hotel} handleMarkerClick={this.handleMarkerClick} />
           ))}
           {numHotelsToShow < hotels.length && (
             <div className="buttonContainer">
@@ -147,36 +129,17 @@ class HotelSearch extends Component {
               };
 
               return (
-                <Marker
+                <HotelMarker
                   key={hotel.place_id}
-                  name={hotel.name}
+                  hotel={hotel}
+                  handleMarkerClick={this.handleMarkerClick}
                   position={position}
-                  onClick={() => this.handleMarkerClick(hotel)}
                 />
               );
             })}
           </Map>
         </div>
-        {selectedHotel && (
-          <div className="hotelSelected">
-            <h2>Selected Hotel:</h2>
-            <h3 className="hotelName">{selectedHotel.name}</h3>
-            <p className="hotelAddress">Address: {selectedHotel.vicinity}</p>
-            <p className="hotelRating">Rating: {selectedHotel.rating}</p>
-            <p className="hotelPrice">
-              Price Range: {getPriceRange(selectedHotel.price_level) || 'Not available (VISIT HOTEL WEBSITE)'}
-            </p>
-            {selectedHotel.photos && selectedHotel.photos[0] ? (
-              <img
-                src={selectedHotel.photos[0].getUrl()}
-                alt="Hotel"
-                className="hotelImage"
-              />
-            ) : (
-              <p>No Photo Available</p>
-            )}
-          </div>
-        )}
+        {selectedHotel && <SelectedHotel hotel={selectedHotel} />}
       </div>
     );
   }

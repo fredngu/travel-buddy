@@ -1,50 +1,37 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import './App.css';
 import NavBar from './components/NavBar';
 import Flight from './components/Flight';
 import HotelSearch from './components/hotels/HotelSearch';
-import Button from '@mui/material/Button'
+import Button from '@mui/material/Button';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      message: 'Click the button to load data!',
-      flightData: [],
-      isLoading: false,
-      location: '',
-      coordinates: { lat: 51.049999, lng: -114.066666 },
-    };
-  }
+function App() {
+  const [message, setMessage] = useState('Click the button to load data!');
+  const [location, setLocation] = useState('');
+  const [coordinates, setCoordinates] = useState({ lat: 51.049999, lng: -114.066666 });
 
-  fetchData = () => {
-    axios
-      .get('/api/data')
+  const fetchData = () => {
+    axios.get('/api/data')
       .then((response) => {
-        // handle success
         console.log(response.data);
-
-        console.log(response.data.message);
-        this.setState({
-          message: response.data.message,
-        });
+        setMessage(response.data.message);
       });
   }
 
-  handleLocationChange = (e) => {
-    this.setState({ location: e.target.value });
+  const handleLocationChange = (e) => {
+    setLocation(e.target.value);
   };
 
-  handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (this.state.location) {
-      const newCoordinates = await this.fetchCoordinates(this.state.location);
-      this.setState({ coordinates: newCoordinates });
+    if (location) {
+      const newCoordinates = await fetchCoordinates(location);
+      setCoordinates(newCoordinates);
     }
   };
 
-  fetchCoordinates = async (location) => {
+  const fetchCoordinates = async (location) => {
     try {
       const response = await fetch(
         `https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`
@@ -55,36 +42,33 @@ class App extends Component {
         return { lat, lng };
       } else {
         console.error('Location not found');
-        return this.state.coordinates; // Return the current coordinates if the location is not found
+        return coordinates;
       }
     } catch (error) {
       console.error('Error fetching coordinates:', error);
-      return this.state.coordinates; // Return the current coordinates on error
+      return coordinates;
     }
   };
 
-  render() {
-    return (
-      <div className="App">
-        <NavBar />
-        <h1>{this.state.message}</h1>
-        <Button variant="contained" onClick={this.fetchData}>Fetch Data</Button>
-        <Flight />
-        {/* Render the HotelSearch component */}
-        <form onSubmit={this.handleSubmit}>
-          <input
-            className="input-field"
-            type="text"
-            placeholder="Enter location (e.g., city name)"
-            value={this.state.location}
-            onChange={this.handleLocationChange}
-          />
-          <button className="search-button" type="submit">Search</button>
-        </form>
-        <HotelSearch initialCenter={this.state.coordinates} />
-      </div>
-    );
-  }
+  return (
+    <div className="App">
+      <NavBar />
+      <h1>{message}</h1>
+      <Button variant="contained" onClick={fetchData}>Fetch Data</Button>
+      <Flight />
+      <form onSubmit={handleSubmit}>
+        <input
+          className="input-field"
+          type="text"
+          placeholder="Enter location (e.g., city name)"
+          value={location}
+          onChange={handleLocationChange}
+        />
+        <button className="search-button" type="submit">Search</button>
+      </form>
+      <HotelSearch initialCenter={coordinates} />
+    </div>
+  );
 }
 
 export default App;
