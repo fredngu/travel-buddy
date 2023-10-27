@@ -1,0 +1,85 @@
+/* HotelSearch.css */
+
+.container {
+  display: flex;
+}
+
+.hotelList {
+  flex: 1;
+  padding: 1rem;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.hotelCard {
+  display: flex;
+  margin: 1rem 0;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+}
+
+.hotelSelected {
+  background-color: #fff;
+  position: relative;
+  margin: 1rem;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+}
+
+.hotelImageContainer {
+  flex: 1;
+  margin-right: 1rem;
+}
+
+.hotelImage {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+}
+
+.hotelInfoContainer {
+  flex: 2;
+}
+
+.hotelName {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.hotelAddress {
+  font-size: 1rem;
+}
+
+.hotelRating {
+  font-size: 1rem;
+}
+
+.hotelPrice {
+  font-size: 1rem;
+}
+
+.mapContainer {
+  flex: 2;
+  height: 80vh;
+  margin-top: 20px;
+  margin-right: 20px;
+  padding-top: 60px;
+}
+
+.seeMoreButton {
+  background: green;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+}
