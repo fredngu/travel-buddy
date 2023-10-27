@@ -1,7 +1,7 @@
 import React from 'react';
 import { getPriceRange } from '../utils/PriceUtils';
 
-const SelectedHotel = ({ hotel }) => (
+const SelectedHotel = ({ hotel, onClose }) => (
   <div className="hotelSelected">
     <h2>Selected Hotel:</h2>
     <h3 className="hotelName">{hotel.name}</h3>
@@ -15,6 +15,7 @@ const SelectedHotel = ({ hotel }) => (
     ) : (
       <p>No Photo Available</p>
     )}
+    <button className="close-button" onClick={onClose}>Close</button>
   </div>
 );
 

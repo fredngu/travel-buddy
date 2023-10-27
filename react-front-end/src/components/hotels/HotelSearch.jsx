@@ -1,6 +1,6 @@
 import './HotelSearch.css';
 import React, { Component } from 'react';
-import { Map, GoogleApiWrapper} from 'google-maps-react';
+import { Map, GoogleApiWrapper } from 'google-maps-react';
 import HotelCard from './HotelCard';
 import HotelMarker from './HotelMarker';
 import SelectedHotel from './SelectedHotel';
@@ -58,7 +58,7 @@ class HotelSearch extends Component {
         map: map,
       });
 
-      marker.addListener("click", () => {
+      marker.addListener('click', () => {
         this.handleMarkerClick(hotel);
       });
     });
@@ -93,6 +93,11 @@ class HotelSearch extends Component {
   // Handle marker click to select the hotel
   handleMarkerClick = (hotel) => {
     this.setState({ selectedHotel: hotel });
+  };
+
+  // Function to close the selected hotel card
+  closeSelectedHotel = () => {
+    this.setState({ selectedHotel: null });
   };
 
   render() {
@@ -139,7 +144,9 @@ class HotelSearch extends Component {
             })}
           </Map>
         </div>
-        {selectedHotel && <SelectedHotel hotel={selectedHotel} />}
+        {selectedHotel && (
+          <SelectedHotel hotel={selectedHotel} onClose={this.closeSelectedHotel} />
+        )}
       </div>
     );
   }

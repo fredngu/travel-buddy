@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './App.css';
 import NavBar from './components/NavBar';
+import Footer from './components/Footer';
 import Flight from './components/Flight';
 import HotelSearch from './components/hotels/HotelSearch';
 import Button from '@mui/material/Button';
@@ -67,6 +68,7 @@ function App() {
         <button className="search-button" type="submit">Search</button>
       </form>
       <HotelSearch initialCenter={coordinates} />
+      <Footer />
     </div>
   );
 }
