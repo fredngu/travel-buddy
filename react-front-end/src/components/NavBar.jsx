@@ -1,33 +1,42 @@
 import React from 'react';
 import '../styles/NavBar.scss'
+import { AppBar, Toolbar, Button, Typography, Container } from '@mui/material';
 import { Auth0Provider } from '@auth0/auth0-react';
-import LoginButton from '../api/Login';
-import LogoutButton from '../api/Logout';
-import Profile from '../api/Profile';
+import LoginButton from '../api/login';
+import LogoutButton from '../api/logout';
+import Profile from '../api/profile';
+import Logo from '../images/TravelBuddyLogo.png';
+import '../styles/NavBar.scss';
 
 function NavBar() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <ul>
-        <Auth0Provider
-          domain="dev-6jhms23po3hoo2lj.us.auth0.com"
-          clientId="TybkdIkTe6Yd8FMUl78uDXEy6dREGsry"
-          authorizationParams={{
-          redirect_uri: window.location.origin
-          }}
-        >
-        <li className="nav-item">
-          <LoginButton />
-        </li>
-        <li className="nav-item">
-          <LogoutButton />
-        </li>
-        <li className="nav-item">
-          <Profile />
-        </li>
+    <AppBar position="static">
+      <Container>
+        <Toolbar>
+          <img src={Logo} alt="Logo" className="logo" sx={{ maxWidth: 100, maxHeight: 50 }} />
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            Travel Buddy
+          </Typography>
+          <Auth0Provider
+            domain="dev-6jhms23po3hoo2lj.us.auth0.com"
+            clientId="TybkdIkTe6Yd8FMUl78uDXEy6dREGsry"
+            authorizationParams={{
+              redirect_uri: window.location.origin,
+            }}
+          >
+            <Button color="inherit">
+              <LoginButton />
+            </Button>
+            <Button color="inherit">
+              <LogoutButton />
+            </Button>
+            <Button color="inherit">
+              <Profile />
+            </Button>
           </Auth0Provider>
-        </ul>
-    </nav>
+        </Toolbar>
+      </Container>
+    </AppBar>
   );
 }
 

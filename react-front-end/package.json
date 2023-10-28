@@ -8,10 +8,15 @@
     "@emotion/styled": "^11.11.0",
     "@heroicons/react": "^2.0.18",
     "@mui/icons-material": "^5.14.15",
+<<<<<<< HEAD
     "@mui/material": "^5.14.15",
+=======
+    "@mui/material": "^5.14.14",
+>>>>>>> f0efd6ca280b15ea46bc391ecaf870212d8fd1bd
     "@mui/x-date-pickers": "^6.16.2",
     "axios": "^0.18.1",
     "dayjs": "^1.11.10",
+    "google-maps-react": "^2.0.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.17.0",
