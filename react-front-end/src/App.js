@@ -4,6 +4,7 @@ import './App.css';
 import NavBar from './components/NavBar';
 import Flight from './components/Flight';
 import Button from '@mui/material/Button'
+import ResponsiveAppBar from './components/muiNavBar';
 
 class App extends Component {
   constructor(props) {
@@ -32,6 +33,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <ResponsiveAppBar />
         <NavBar />
         <h1>{this.state.message}</h1>
         <Button variant="contained" onClick={this.fetchData}>Fetch Data</Button>

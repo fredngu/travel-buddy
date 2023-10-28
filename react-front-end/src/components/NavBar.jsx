@@ -1,6 +1,5 @@
 import React from 'react';
 import '../styles/NavBar.scss'
-
 import { Auth0Provider } from '@auth0/auth0-react';
 import LoginButton from '../api/Login';
 import LogoutButton from '../api/Logout';
