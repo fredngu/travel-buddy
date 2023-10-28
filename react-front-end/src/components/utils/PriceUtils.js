@@ -9,6 +9,6 @@ export function getPriceRange(priceLevel) {
     case 3:
       return '$$$$';
     default:
-      return 'Not available. Visit hotel website';
+      return '$';
   }
 }
