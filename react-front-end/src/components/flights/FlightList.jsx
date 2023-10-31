@@ -27,6 +27,10 @@ const FlightList = ({ flightData, isLoading }) => {
         });
     };
     
+    const HandleFlightsCardClick = (flightItinerary) => {
+        console.log("Flights Card Clicked", flightItinerary);
+    }
+
     const flightListHeight = isLoading ? "40vh" : "auto";
 
     const sortedItineraries = flightData.sort((a, b) => 
@@ -40,7 +44,7 @@ const FlightList = ({ flightData, isLoading }) => {
             </div>
             <div className="w-full max-w-2xl">
                 {sortedItineraries.map((itinerary, index) => (
-                    <div key={index} className="bg-white dark:bg-slate-600 p-6 rounded-lg shadow-lg transition duration-150 ease-in-out hover:shadow-xl space-y-3 border border-gray-200 mb-4">
+                    <div key={index} className="bg-white dark:bg-slate-600 p-6 rounded-lg shadow-lg transition duration-150 ease-in-out hover:shadow-xl space-y-3 border border-gray-200 mb-4" onClick={() => HandleFlightsCardClick(itinerary)}>
                     {itinerary.legs.map((leg, legIndex) => (
                         <div key={legIndex} className="flex flex-col md:flex-row justify-between items-stretch pt-2 space-y-2 md:space-y-0">
                             <div className="flex items-center space-x-4">

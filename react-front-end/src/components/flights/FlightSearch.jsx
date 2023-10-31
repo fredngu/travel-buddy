@@ -1,24 +1,23 @@
 import React, { useState } from 'react';
-import Input from './Input';
-import FlightList from './FlightList';
+import { FlightList, Input } from '../flights';
 
 const FlightSearch = () => {
   const [flightData, setFlightData] = useState([])
-  const [loading, setLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
 
   return (
     <div className='relative min-h-[100vh] dark:bg-gray-700 dark:text-white'>
         <div className="pb-[2.5rem]">
           <div className="md:px-12 ">
             <Input
-              setFlightData={(data) => setFlightData({ flightData: data })}
-              setIsLoading={(loading) => setLoading({ isLoading: loading })}
+              setFlightData={(data) => setFlightData(data)}
+              setIsLoading={(loading) => setIsLoading(loading)}
             />
           </div>
         </div>
         <FlightList
           flightData={flightData}
-          isLoading={loading}
+          isLoading={isLoading}
         />
     </div>
   );

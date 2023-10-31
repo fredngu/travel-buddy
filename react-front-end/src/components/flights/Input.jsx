@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { ArrowsRightLeftIcon, MagnifyingGlassIcon } from '@heroicons/react/24/solid'
-import InputDate from './InputDate'
-import InputDest from './InputDest'
-import InputOrig from './InputOrig'
-import airportData from "./airports.json";
+import InputDate from '../flights/InputDate'
+import InputDest from '../flights/InputDest'
+import InputOrig from '../flights/InputOrig'
+import airportData from "../flights/airports.json";
 import fetchFromAPI from '../utils/fetchFromAPI';
 import dayjs from 'dayjs';
 
@@ -106,6 +106,8 @@ const Input = ({ setFlightData, setIsLoading }) => {
         setIsLoading(false);
         return;
       }
+
+      console.log("Raw fetch response:", data);
 
       if (data.data.itineraries.length === 0) {
         setIsLoading(false);
