@@ -3,8 +3,9 @@ import axios from 'axios';
 import './App.css';
 import NavBar from './components/NavBar';
 import Flight from './components/flights//FlightSearch';
+import Hotel from './components/hotels/HoteSearchPage';
 import Button from '@mui/material/Button'
-import { Route, Routes, Link } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { MyTrips } from "./pages/MyTrips"
 
@@ -40,6 +41,7 @@ class App extends Component {
           <Route path="/" element={<Home />} />
           <Route path="/trips" element={<MyTrips />} />
           <Route path="/flight" element={<Flight />} />
+          <Route path="/hotel" element={<Hotel />} />
         </Routes>
       </div>
     );

@@ -42,6 +42,11 @@ function NavBar() {
               </Link>
             </Button>
             <Button color="inherit">
+              <Link to="/hotel" style={{ textDecoration: 'none', color: 'white' }}>
+                Hotel
+              </Link>
+            </Button>
+            <Button color="inherit">
               <LoginButton />
             </Button>
             <Button color="inherit">
