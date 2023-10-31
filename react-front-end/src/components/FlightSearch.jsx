@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Input from './Input';
 import FlightList from './FlightList';
 
-const Flight = () => {
+const FlightSearch = () => {
   const [flightData, setFlightData] = useState('')
   const [loading, setLoading] = useState('')
 
@@ -24,4 +24,4 @@ const Flight = () => {
   );
 };
 
-export default Flight;
+export default FlightSearch;
