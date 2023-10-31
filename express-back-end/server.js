@@ -29,9 +29,11 @@ App.get('/travellers', async (req, res) => {
   }
 })
 
-App.get('/trips', async (req, res) => {
+App.get('/trips/:id', async (req, res) => {
   try {
-    const allTrips = await db.query('SELECT * FROM trip ORDER BY trip_id ASC');
+    const traveller_id = req.params.id
+    console.log(traveller_id)
+    const allTrips = await db.query('SELECT * FROM trip WHERE traveller_id = $1', [traveller_id]);
     res.json(allTrips.rows)
   } catch (err) {
     console.error(err.message)

@@ -9,6 +9,7 @@ import Logo from '../images/TravelBuddyLogo.png';
 import '../styles/NavBar.scss';
 
 function NavBar() {
+
   return (
     <AppBar position="static">
       <Container>
@@ -26,11 +27,11 @@ function NavBar() {
               redirect_uri: window.location.origin,
             }}
           >
-          <Button color="inherit">
-            <Link to="/home" style={{ textDecoration: 'none', color: 'white' }}>
-              Home
-            </Link>
-          </Button>
+            <Button color="inherit">
+              <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>
+                Home
+              </Link>
+            </Button>
             <Button color="inherit">
               <Link to="/trips" style={{ textDecoration: 'none', color: 'white' }}>
                 Trips
