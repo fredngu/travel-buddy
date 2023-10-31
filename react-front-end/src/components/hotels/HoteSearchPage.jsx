@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import NavBar from '../NavBar';
 import HotelSearch from './HotelSearch';
 import './HotelSearch.css';
 
@@ -41,7 +40,6 @@ function HotelSearchPage() {
 
   return (
     <div className="HotelSearchPage">
-      <NavBar />
       <form onSubmit={handleSubmit}>
         <input
           className="input-field"

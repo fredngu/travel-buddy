@@ -1,6 +1,6 @@
 import React from 'react';
-import '../styles/NavBar.scss'
 import { AppBar, Toolbar, Button, Typography, Container } from '@mui/material';
+import { Link } from "react-router-dom";
 import { Auth0Provider } from '@auth0/auth0-react';
 import LoginButton from '../api/login';
 import LogoutButton from '../api/logout';
@@ -13,8 +13,10 @@ function NavBar() {
     <AppBar position="static">
       <Container>
         <Toolbar>
-          <img src={Logo} alt="Logo" className="logo" sx={{ maxWidth: 100, maxHeight: 50 }} />
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Link to="/" style={{ textDecoration: 'none' }}>
+            <img src={Logo} alt="Logo" className="logo" style={{ maxWidth: 100, maxHeight: 50 }} />
+          </Link>
+          <Typography variant="h6" component="div" style={{ flexGrow: 1 }}>
             Travel Buddy
           </Typography>
           <Auth0Provider
@@ -24,6 +26,26 @@ function NavBar() {
               redirect_uri: window.location.origin,
             }}
           >
+          <Button color="inherit">
+            <Link to="/home" style={{ textDecoration: 'none', color: 'white' }}>
+              Home
+            </Link>
+          </Button>
+            <Button color="inherit">
+              <Link to="/trips" style={{ textDecoration: 'none', color: 'white' }}>
+                Trips
+              </Link>
+            </Button>
+            <Button color="inherit">
+              <Link to="/flight" style={{ textDecoration: 'none', color: 'white' }}>
+                Flight
+              </Link>
+            </Button>
+            <Button color="inherit">
+              <Link to="/hotel" style={{ textDecoration: 'none', color: 'white' }}>
+                Hotel
+              </Link>
+            </Button>
             <Button color="inherit">
               <LoginButton />
             </Button>
