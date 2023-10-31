@@ -29,6 +29,17 @@ App.get('/travellers', async (req, res) => {
   }
 })
 
+App.get('/trips', async (req, res) => {
+  try {
+    const allTrips = await db.query('SELECT * FROM trip ORDER BY trip_id ASC');
+    res.json(allTrips.rows)
+  } catch (err) {
+    console.error(err.message)
+  }
+
+})
+
+
 App.post('/travellers', async (req, res) => {
   const user = req.body;
   console.log(user)
@@ -45,7 +56,7 @@ App.post('/travellers', async (req, res) => {
   res.send(checkUser.rows)
 })
 
-App.post('/hotels')
+App.post('/trip')
 
 App.listen(PORT, () => {
   // eslint-disable-next-line no-console

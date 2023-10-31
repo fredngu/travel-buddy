@@ -7,15 +7,20 @@ export function MyTrips() {
   const [trips, setTrips] = useState([])
   useEffect(() => {
     if (window.sessionStorage.getItem('traveller_id')) {
-      axios.get("http://localhost:3000/trips")
+      axios.get("/trips")
       .then(({data}) => {
-        console.log(data)
+        setTrips(data)
       })
     }
   }, []);
 
+  console.log(trips);
+
   return (
-    
-    <h1>This is the Trips</h1>
+    <div>
+      {trips.map(trip => (
+        <p key={trip.trip_id}>{trip.trip_name}</p>
+      ))}
+    </div>
   )
 }
