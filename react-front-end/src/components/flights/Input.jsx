@@ -4,7 +4,7 @@ import InputDate from './InputDate'
 import InputDest from './InputDest'
 import InputOrig from './InputOrig'
 import airportData from "./airports.json";
-import fetchFromAPI from './utils/fetchFromAPI';
+import fetchFromAPI from '../utils/fetchFromAPI';
 import dayjs from 'dayjs';
 
 const Input = ({ setFlightData, setIsLoading }) => {
