@@ -1,9 +1,18 @@
 import React, { useState } from 'react';
 import { FlightList, Input } from '../flights';
+import { useNavigate } from 'react-router-dom';
 
 const FlightSearch = () => {
   const [flightData, setFlightData] = useState([])
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
+
+  // Define the onFlightCardClick function
+  const onFlightCardClick = (flightItinerary) => {
+    // Handle the click event for a flight card
+    navigate('/hotel');
+    // We can add more logic here, e.g., opening a modal with detailed flight information
+  };
 
   return (
     <div className='relative min-h-[100vh] dark:bg-gray-700 dark:text-white'>
@@ -18,7 +27,8 @@ const FlightSearch = () => {
         <FlightList
           flightData={flightData}
           isLoading={isLoading}
-        />
+          onFlightCardClick={onFlightCardClick}
+      />
     </div>
   );
 };
