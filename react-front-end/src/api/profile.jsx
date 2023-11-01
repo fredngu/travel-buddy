@@ -23,7 +23,10 @@ const Profile = () => {
         window.sessionStorage.setItem('traveller_id', data[0].traveller_id)
       })
     }
-  }, [user]);
+    if (!isAuthenticated) {
+      window.sessionStorage.clear()
+    }
+  }, [user, isAuthenticated]);
 
   useEffect(() => {
     getTravellers()
@@ -39,7 +42,6 @@ const Profile = () => {
     isAuthenticated && (
       <div>
         <h2>{user.name}</h2>
-        <p>{user.email}</p>
       </div>
     )
   );
