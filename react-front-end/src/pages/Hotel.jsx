@@ -9,7 +9,8 @@ export function Hotel() {
   console.log(state.itineraryData);
   return (
     <>
-      <h1>Find a good hotel</h1>
+      <br />
+      <h1 className="text-2xl font-semibold text-center mb-4">Find a good hotel</h1>
       <HotelSearch />
     </>
   );

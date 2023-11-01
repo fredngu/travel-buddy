@@ -4,6 +4,7 @@ import { Map, GoogleApiWrapper } from 'google-maps-react';
 import HotelCard from './HotelCard';
 import HotelMarker from './HotelMarker';
 import SelectedHotel from './SelectedHotel';
+import { Button } from '@mui/material';
 
 const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
 
@@ -113,9 +114,9 @@ class HotelSearch extends Component {
           ))}
           {numHotelsToShow < hotels.length && (
             <div className="buttonContainer">
-              <button className="seeMoreButton" onClick={this.loadMoreHotels}>
+              <Button variant="contained" size="large" onClick={this.loadMoreHotels}>
                 See more
-              </button>
+              </Button>
             </div>
           )}
         </div>

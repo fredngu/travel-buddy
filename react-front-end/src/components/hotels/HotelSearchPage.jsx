@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import HotelSearch from "./HotelSearch";
 import "./HotelSearch.css";
+import { Button } from '@mui/material';
 
 function HotelSearchPage() {
   const [location, setLocation] = useState("");
@@ -50,9 +51,9 @@ function HotelSearchPage() {
           value={location}
           onChange={handleLocationChange}
         />
-        <button className="search-button" type="submit">
+        <Button variant="contained" size="large">
           Search
-        </button>
+        </Button>
       </form>
       <HotelSearch initialCenter={coordinates} />
     </div>
