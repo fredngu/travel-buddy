@@ -1,15 +1,7 @@
-import React, { Component } from 'react';
-import './App.css';
-import NavBar from './components/NavBar';
-import Flight from './components/flights//FlightSearch';
-import Hotel from './components/hotels/HoteSearchPage';
 import React, { Component } from "react";
-import axios from "axios";
 import "./App.css";
 import NavBar from "./components/NavBar";
 import Flight from "./components/flights//FlightSearch";
-// import Hotel from "./components/hotels/HotelSearchPage";
-import Button from "@mui/material/Button";
 import { Route, Routes } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { MyTrips } from "./pages/MyTrips";
