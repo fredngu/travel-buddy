@@ -1,5 +1,5 @@
 //Page for hotel search
-import HotelSearch from "../components/hotels/HotelSearch";
+import HotelSearch from "../components/hotels/HotelSearchPage";
 import { useLocation } from "react-router-dom";
 
 export function Hotel() {
