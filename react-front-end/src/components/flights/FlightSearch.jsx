@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FlightList, Input } from "../flights";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useItineraryData } from "../utils/ItineraryDataContext";
 import { Button } from "@mui/material";
 
@@ -8,6 +8,7 @@ const FlightSearch = () => {
   const [flightData, setFlightData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const { state, dispatch } = useItineraryData();
+  const navigate = useNavigate();
 
   // Define the onFlightCardClick function
   const onFlightCardClick = (flightItinerary) => {
@@ -33,13 +34,8 @@ const FlightSearch = () => {
         isLoading={isLoading}
         onFlightCardClick={onFlightCardClick}
       />
-      <Button variant="contained">
-        <Link
-          to="/trip_summary"
-          style={{ textDecoration: "none", color: "white" }}
-        >
-          Looks good
-        </Link>
+      <Button variant="contained" onClick={() => navigate("/hotel")}>
+        Looks good
       </Button>
     </div>
   );

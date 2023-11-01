@@ -1,12 +1,19 @@
-//Page for hotel search
+import React, { useEffect } from "react";
 import HotelSearch from "../components/hotels/HotelSearchPage";
 import { useLocation } from "react-router-dom";
+import { useItineraryData } from "../components/utils/ItineraryDataContext";
 
 export function Hotel() {
-  // const location = useLocation();
-  // const { itineraryData } = location.state;
   const { state } = useLocation();
-  console.log(state.itineraryData);
+  const { dispatch } = useItineraryData();
+
+  useEffect(() => {
+    // Check if state and itineraryData exist before dispatching
+    if (state && state.itineraryData) {
+      dispatch({ type: "SET_ITINERARY_DATA", payload: state.itineraryData });
+    }
+  }, [state, dispatch]);
+
   return (
     <>
       <br />
