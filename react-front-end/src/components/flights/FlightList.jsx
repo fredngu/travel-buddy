@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const FlightList = ({ flightData, isLoading, onFlightCardClick }) => {
   const [displayCount, setDisplayCount] = useState(5);
+  const [selectedFlight, setSelectedFlight] = useState(null);
   const navigate = useNavigate();
 
   const formatTime = (dateStr) => {
@@ -29,9 +30,11 @@ const FlightList = ({ flightData, isLoading, onFlightCardClick }) => {
   };
 
   const handleFlightCardClick = (flightItinerary) => {
+    // Update the selected flight
+    setSelectedFlight(flightItinerary);
+
     // Call the provided onFlightCardClick function
     onFlightCardClick(flightItinerary);
-    // navigate('/hotel');
   };
 
   const flightListHeight = isLoading ? "40vh" : "auto";
@@ -72,7 +75,9 @@ const FlightList = ({ flightData, isLoading, onFlightCardClick }) => {
         {sortedItineraries.map((itinerary, index) => (
           <div
             key={index}
-            className="bg-white dark:bg-slate-600 p-6 rounded-lg shadow-lg transition duration-150 ease-in-out hover:shadow-xl space-y-3 border border-gray-200 mb-4"
+            className={`bg-white dark:bg-slate-600 p-6 rounded-lg shadow-lg transition duration-150 ease-in-out hover:shadow-xl space-y-3 border border-gray-200 mb-4 ${
+              selectedFlight === itinerary ? "bg-yellow-100" : ""
+            }`}
             onClick={() => handleFlightCardClick(itinerary)}
           >
             {itinerary.legs.map((leg, legIndex) => (
