@@ -109,7 +109,7 @@ class HotelSearch extends Component {
     return (
       <div className="container">
         <div className="hotelList">
-          <h2>Hotels Near Your Location:</h2>
+        <h1 className="text-2xl font-semibold text-center mb-4">Hotels Near locations requested</h1>
           {visibleHotels.map((hotel) => (
             <HotelCard key={hotel.place_id} hotel={hotel} handleMarkerClick={this.handleMarkerClick} />
           ))}
