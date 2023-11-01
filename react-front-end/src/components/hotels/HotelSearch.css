@@ -24,6 +24,10 @@
   background-color: #fff;
 }
 
+.highlighted {
+  background-color: yellow;
+}
+
 .hotelSelected {
   position: relative;
   margin: 1rem;

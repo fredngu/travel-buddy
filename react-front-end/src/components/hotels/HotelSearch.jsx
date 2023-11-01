@@ -1,4 +1,3 @@
-import './HotelSearch.css';
 import React, { Component } from 'react';
 import { Map, GoogleApiWrapper } from 'google-maps-react';
 import HotelCard from './HotelCard';
@@ -15,30 +14,21 @@ class HotelSearch extends Component {
     numHotelsToShow: 3,
     mapCenter: this.props.initialCenter,
     selectedHotel: null,
-    isMounted: false,
+    highlightedHotel: null,
   };
 
   componentDidMount() {
-    this.setState({ isMounted: true });
+    this.searchForHotels();
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.google) {
-      if (this.props.initialCenter !== prevProps.initialCenter) {
-        this.updateMapCenter();
-      } else {
-        this.searchForHotels();
-      }
-    } else {
-      // Handle the case where this.props.google is not available
-      console.error("Google Maps API is not available. Please check your API key or network connection.");
-      // Error state for component
-      this.setState({ error: "Google Maps API is not available. Please check your API key or network connection." });
+    if (this.props.initialCenter !== prevProps.initialCenter) {
+      this.updateMapCenter();
     }
   }
 
   updateMapCenter() {
-    if (this.state.map && this.state.isMounted) {
+    if (this.state.map) {
       this.state.map.setCenter(this.props.initialCenter);
       this.setState({ mapCenter: this.props.initialCenter }, () => {
         this.searchForHotels();
@@ -79,7 +69,6 @@ class HotelSearch extends Component {
     service.nearbySearch(request, (results, status) => {
       if (status === window.google.maps.places.PlacesServiceStatus.OK) {
         this.setState({ hotels: results }, () => {
-          // Call this function after setting state
           this.addMarkersToMap();
         });
       }
@@ -87,31 +76,33 @@ class HotelSearch extends Component {
   }
 
   loadMoreHotels = () => {
-    if (this.state.isMounted) {
-      this.setState((prevState) => ({ numHotelsToShow: prevState.numHotelsToShow + 4 }));
-    }
+    this.setState((prevState) => ({ numHotelsToShow: prevState.numHotelsToShow + 4 }));
   };
 
-  // Handle marker click to select the hotel
   handleMarkerClick = (hotel) => {
-    this.setState({ selectedHotel: hotel });
+    this.setState({ selectedHotel: hotel, highlightedHotel: hotel });
   };
 
-  // Function to close the selected hotel card
   closeSelectedHotel = () => {
     this.setState({ selectedHotel: null });
   };
 
   render() {
-    const { hotels, numHotelsToShow, selectedHotel } = this.state;
+    const { hotels, numHotelsToShow, selectedHotel, highlightedHotel } = this.state;
     const visibleHotels = hotels.slice(0, numHotelsToShow);
 
     return (
       <div className="container">
         <div className="hotelList">
-        <h1 className="text-2xl font-semibold text-center mb-4">Hotels Near location searched</h1>
+          <h1 className="text-2xl font-semibold text-center mb-4">Hotels Near location searched</h1>
           {visibleHotels.map((hotel) => (
-            <HotelCard key={hotel.place_id} hotel={hotel} handleMarkerClick={this.handleMarkerClick} />
+            <HotelCard
+              key={hotel.place_id}
+              hotel={hotel}
+              handleMarkerClick={this.handleMarkerClick}
+              isSelected={hotel === selectedHotel}
+              isHighlighted={hotel === highlightedHotel}
+            />
           ))}
           {numHotelsToShow < hotels.length && (
             <div className="buttonContainer">
@@ -140,6 +131,7 @@ class HotelSearch extends Component {
                   key={hotel.place_id}
                   hotel={hotel}
                   handleMarkerClick={this.handleMarkerClick}
+                  isHighlighted={hotel === highlightedHotel}
                   position={position}
                 />
               );
