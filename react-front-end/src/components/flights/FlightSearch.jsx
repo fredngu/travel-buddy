@@ -1,26 +1,23 @@
 import React, { useState } from "react";
 import { FlightList, Input } from "../flights";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useItineraryData } from "../utils/ItineraryDataContext";
 import { Button } from "@mui/material";
-import { mockData as mockItineraryData } from "../../mockData/mockItineraryData";
-import { FlightSummary } from "../FlightSummary";
 
 const FlightSearch = () => {
   const [flightData, setFlightData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [itineraryData, setItineraryData] = useState(mockItineraryData);
-  const navigate = useNavigate();
+  const { state, dispatch } = useItineraryData();
 
   // Define the onFlightCardClick function
   const onFlightCardClick = (flightItinerary) => {
     // Handle the click event for a flight card
-    // navigate("/hotel");
     // We can add more logic here, e.g., opening a modal with detailed flight information
-    setItineraryData(flightItinerary);
+    dispatch({ type: "SET_ITINERARY_DATA", payload: flightItinerary });
   };
 
   console.log(flightData);
-  console.log(itineraryData);
+  console.log(state.itineraryData);
   return (
     <div className="relative min-h-[100vh] dark:bg-gray-700 dark:text-white">
       <div className="pb-[2.5rem]">
@@ -36,15 +33,10 @@ const FlightSearch = () => {
         isLoading={isLoading}
         onFlightCardClick={onFlightCardClick}
       />
-
-      {/* This component can be used in trip summary page
-      */}
-
       <Button variant="contained">
         <Link
-          to="/hotel"
+          to="/trip_summary"
           style={{ textDecoration: "none", color: "green" }}
-          state={{ itineraryData: itineraryData }}
         >
           Looks good
         </Link>
