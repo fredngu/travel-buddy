@@ -36,7 +36,7 @@ const FlightSearch = () => {
       <Button variant="contained">
         <Link
           to="/trip_summary"
-          style={{ textDecoration: "none", color: "green" }}
+          style={{ textDecoration: "none", color: "white" }}
         >
           Looks good
         </Link>

@@ -181,10 +181,10 @@ const Input = ({ setFlightData, setIsLoading }) => {
           setReturnDate={setReturnDate}
           />
           <div className="justify-center flex">
-            <button onClick={handleExploreClick} className=" -mt-2 shadow-xl -mb-5 flex hover:font-bold hover:ring-cyan-950 bg-teal-200 rounded-[11px] p-1.5 text-slate-800 font-semibold">
-              <MagnifyingGlassIcon className="h-5 w-5 mt-[3%] mr-1" />
-              Explore
-            </button>
+          <button onClick={handleExploreClick} className="px-20 py-3 text-xl -mt-2 shadow-xl -mb-5 flex hover:font-bold hover:ring-cyan-950 bg-purple-700 text-white rounded-[11px] p-1.5 text-slate-800 font-semibold">
+            <MagnifyingGlassIcon className="h-5 w-5 mt-[3%] mr-1" />
+            Explore
+          </button>
           </div>
       </form>
     </div>
