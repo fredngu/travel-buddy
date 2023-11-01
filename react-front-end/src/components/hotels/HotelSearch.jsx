@@ -29,11 +29,12 @@ class HotelSearch extends Component {
       } else {
         this.searchForHotels();
       }
+    } else {
+      // Handle the case where this.props.google is not available
+      console.error("Google Maps API is not available. Please check your API key or network connection.");
+      // Error state for component
+      this.setState({ error: "Google Maps API is not available. Please check your API key or network connection." });
     }
-  }
-
-  componentWillUnmount() {
-    this.setState({ isMounted: false });
   }
 
   updateMapCenter() {

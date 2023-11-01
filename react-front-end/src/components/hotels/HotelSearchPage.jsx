@@ -51,7 +51,7 @@ function HotelSearchPage() {
           value={location}
           onChange={handleLocationChange}
         />
-        <Button variant="contained" size="large">
+        <Button variant="contained" size="large" onClick={handleSubmit}>
           Search
         </Button>
       </form>
