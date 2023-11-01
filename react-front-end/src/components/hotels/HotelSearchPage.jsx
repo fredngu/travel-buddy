@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
-import HotelSearch from './HotelSearch';
-import './HotelSearch.css';
-
+import React, { useState } from "react";
+import HotelSearch from "./HotelSearch";
+import "./HotelSearch.css";
 
 function HotelSearchPage() {
-  const [location, setLocation] = useState('');
-  const [coordinates, setCoordinates] = useState({ lat: 51.049999, lng: -114.066666 });
+  const [location, setLocation] = useState("");
+  const [coordinates, setCoordinates] = useState({
+    lat: 51.049999,
+    lng: -114.066666,
+  });
 
   const handleLocationChange = (e) => {
     setLocation(e.target.value);
@@ -25,15 +27,15 @@ function HotelSearchPage() {
         `https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`
       );
       const data = await response.json();
-      if (data.status === 'OK' && data.results.length > 0) {
+      if (data.status === "OK" && data.results.length > 0) {
         const { lat, lng } = data.results[0].geometry.location;
         return { lat, lng };
       } else {
-        console.error('Location not found');
+        console.error("Location not found");
         return coordinates;
       }
     } catch (error) {
-      console.error('Error fetching coordinates:', error);
+      console.error("Error fetching coordinates:", error);
       return coordinates;
     }
   };
@@ -48,7 +50,9 @@ function HotelSearchPage() {
           value={location}
           onChange={handleLocationChange}
         />
-        <button className="search-button" type="submit">Search</button>
+        <button className="search-button" type="submit">
+          Search
+        </button>
       </form>
       <HotelSearch initialCenter={coordinates} />
     </div>
@@ -56,4 +60,3 @@ function HotelSearchPage() {
 }
 
 export default HotelSearchPage;
-
