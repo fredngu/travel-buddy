@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
 import { getPriceRange } from '../utils/PriceUtils';
+import { Button } from '@mui/material';
 
 class HotelCard extends Component {
-  handleClick = () => {
+  handleMarkerClick = () => {
     const { hotel, handleMarkerClick } = this.props;
     handleMarkerClick(hotel);
+  };
+
+  handleStoreButtonClick = (event) => {
+    event.stopPropagation(); // Prevent the click event from propagating to the parent div
+    const { hotel, onStoreHotel } = this.props;
+    onStoreHotel(hotel);
   };
 
   render() {
@@ -13,7 +20,7 @@ class HotelCard extends Component {
     return (
       <div
         className={`hotelCard ${isSelected ? 'highlighted' : ''} ${isHighlighted ? 'highlighted' : ''}`}
-        onClick={this.handleClick}
+        onClick={this.handleMarkerClick} // Handle card click for marker highlight
       >
         <div className="hotelImageContainer">
           {hotel.photos && hotel.photos[0] ? (
@@ -28,7 +35,10 @@ class HotelCard extends Component {
           <p className="hotelRating">Rating: {hotel.rating}</p>
           <p className="hotelPrice">
             Price Range: {getPriceRange(hotel.price_level) || 'Not available (VISIT HOTEL WEBSITE)'}
-          </p>
+          </p>          
+          <Button variant="contained" size="small" onClick={this.handleStoreButtonClick}>
+            Looks Good!
+          </Button>
         </div>
       </div>
     );

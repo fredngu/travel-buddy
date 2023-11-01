@@ -87,6 +87,12 @@ class HotelSearch extends Component {
     this.setState({ selectedHotel: null });
   };
 
+  onStoreHotel = (hotel) => {
+    // Store the hotel data in the state or pass it to another part of your application
+    // You can define your storage logic here
+    console.log('Storing hotel:', hotel);
+  };
+
   render() {
     const { hotels, numHotelsToShow, selectedHotel, highlightedHotel } = this.state;
     const visibleHotels = hotels.slice(0, numHotelsToShow);
@@ -102,6 +108,7 @@ class HotelSearch extends Component {
               handleMarkerClick={this.handleMarkerClick}
               isSelected={hotel === selectedHotel}
               isHighlighted={hotel === highlightedHotel}
+              onStoreHotel={this.onStoreHotel}
             />
           ))}
           {numHotelsToShow < hotels.length && (
