@@ -10,6 +10,7 @@ import "../styles/NavBar.scss";
 import { mockData as itineraryData } from "../mockData/mockItineraryData";
 
 function NavBar() {
+
   return (
     <AppBar position="static">
       <Container>
@@ -32,14 +33,14 @@ function NavBar() {
               redirect_uri: window.location.origin,
             }}
           >
-            <Button color="inherit">
-              <Link
-                to="/home"
+              <Button color="inherit">
+                <Link
+                to="/"
                 style={{ textDecoration: "none", color: "white" }}
               >
-                Home
-              </Link>
-            </Button>
+                  Home
+                </Link>
+              </Button>
             <Button color="inherit">
               <Link
                 to="/trips"

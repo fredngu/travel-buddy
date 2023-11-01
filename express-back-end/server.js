@@ -29,6 +29,19 @@ App.get('/travellers', async (req, res) => {
   }
 })
 
+App.get('/trips/:id', async (req, res) => {
+  try {
+    const traveller_id = req.params.id
+    console.log(traveller_id)
+    const allTrips = await db.query('SELECT * FROM trip WHERE traveller_id = $1', [traveller_id]);
+    res.json(allTrips.rows)
+  } catch (err) {
+    console.error(err.message)
+  }
+
+})
+
+
 App.post('/travellers', async (req, res) => {
   const user = req.body;
   console.log(user)
@@ -45,7 +58,7 @@ App.post('/travellers', async (req, res) => {
   res.send(checkUser.rows)
 })
 
-App.post('/hotels')
+App.post('/trip')
 
 App.listen(PORT, () => {
   // eslint-disable-next-line no-console

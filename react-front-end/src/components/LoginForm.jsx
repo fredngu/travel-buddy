@@ -1,36 +1,26 @@
 import React from 'react';
+import LoginButton from '../api/login';
+import { Auth0Provider } from '@auth0/auth0-react';
+import { Button } from '@mui/material';
 
 const LoginForm = () => {
   return (
-    <div className="login-form mx-auto mt-8 p-6 bg-white rounded-lg shadow-md max-w-md">
-      <h2 className="text-2xl font-semibold text-center mb-4">Login to organize your trip</h2>
-      <form>
-        <div className="mb-4">
-          <label htmlFor="username" className="block text-gray-700">Username</label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            className="form-input mt-1 block w-full border"
-          />
-        </div>
-        <div className="mb-4">
-          <label htmlFor="password" className="block text-gray-700">Password</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            className="form-input mt-1 block w-full border"
-          />
-        </div>
-        <button
-          type="submit"
-          className="w-full bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded"
-        >
-          Sign in
-        </button>
-      </form>
-      <p className="mt-4 text-gray-700 text-sm">No account? <a href="#" className="text-blue-500">Sign up here!</a></p>
+    <div className='relative min-h-[100vh] dark:bg-gray-700 dark:text-black'>
+      
+      <div className="login-form mx-auto mt-8 p-6 bg-white rounded-lg shadow-md max-w-md">
+        <h2 className="text-2xl font-semibold text-center mb-4">Login to Organize Your Trips</h2>
+        <Auth0Provider
+              domain="dev-6jhms23po3hoo2lj.us.auth0.com"
+              clientId="TybkdIkTe6Yd8FMUl78uDXEy6dREGsry"
+              authorizationParams={{
+                redirect_uri: window.location.origin,
+              }}
+            >
+          <Button variant="contained" size="large">
+            <LoginButton/>
+          </Button>
+        </Auth0Provider>
+      </div>
     </div>
   );
 };
