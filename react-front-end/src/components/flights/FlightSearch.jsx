@@ -33,6 +33,10 @@ const FlightSearch = () => {
   return (
     <div className="relative min-h-[100vh] dark:bg-gray-700 dark:text-white">
       <img src={flightImage} alt="Hotel" className="w-full" />
+        <div style={{ background: '#9C27B0' }} className="p-4 text-white">
+          <h1 className="text-4xl font-bold mb-4">Look for your Flight</h1>
+          <p className="text-lg">Discover the best flight options!</p>
+        </div>
       <div className="pb-[2.5rem]">
         <div className="md:px-12 ">
           <Input
@@ -52,7 +56,7 @@ const FlightSearch = () => {
       {/* Conditionally render the "Looks Good" button if a flight itinerary is selected */}
       {isFlightSelected && (
         <Button className="light-purple-button" variant="contained" size="large" onClick={() => navigate("/hotel")}>
-          Looks Good
+          What hotels are available?
         </Button>
       )}
     </div>
