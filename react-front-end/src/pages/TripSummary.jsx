@@ -1,12 +1,14 @@
 import React from "react";
 import FlightSummary from "../components/FlightSummary";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useItineraryData } from "../components/utils/ItineraryDataContext";
 import { useHotelData } from "../components/utils/HotelDataContext";
 import { getPriceRange } from '../components/utils/PriceUtils';
+import Button from "@material-ui/core/Button";
 
 export function TripSummary(props) {
   const location = useLocation();
+  const navigate = useNavigate();
    // Use the context to access the itineraryData
   const { state } = useItineraryData();
   // Access the selected hotel data from the context
@@ -14,6 +16,18 @@ export function TripSummary(props) {
 
   // Check if itineraryData is available from the location or context
   const itineraryData = location.state?.itineraryData || state.itineraryData;
+
+  // Function to handle "One Second Thought" button click
+  const handleOneSecondThoughtClick = () => {
+    // Redirect the user back to the Hotel page
+    navigate("/hotel"); // You should adjust the route as per your application's routing configuration
+  };
+
+  // Function to handle "Looks Good" button click
+  const handleLooksGoodClick = () => {
+    // Redirect the user to the My Trip page
+    navigate("/mytrip"); // You should adjust the route as per your application's routing configuration
+  };
 
   return (
     <div className="relative min-h-[100vh] dark:bg-gray-700 dark:text-white">
@@ -44,6 +58,15 @@ export function TripSummary(props) {
       ) : (
         <p>No hotel selected</p>
       )}
+      {/* "One Second Thought" button */}
+      <Button variant="contained" size="large" onClick={handleOneSecondThoughtClick}>
+        One Second Thought
+      </Button>
+
+      {/* "Looks Good" button */}
+      <Button variant="contained" size="large" onClick={handleLooksGoodClick}>
+        Looks Good
+      </Button>
     </div>
   );
 }
