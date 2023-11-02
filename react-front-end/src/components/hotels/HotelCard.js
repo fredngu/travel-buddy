@@ -1,33 +1,24 @@
 import React from 'react';
+import { useNavigate } from "react-router-dom";
 import { getPriceRange } from '../utils/PriceUtils';
-import { Link, useLocation } from "react-router-dom";
 import { Button } from '@mui/material';
-import { useItineraryData } from "../utils/ItineraryDataContext";
+import { useHotelData } from '../utils/HotelDataContext';
 
-function HotelCard(props) {
-  const location = useLocation();
-  // Use the context to access the itineraryData
-  const { state } = useItineraryData();
+function HotelCard({ hotel, isSelected, isHighlighted, handleMarkerClick, onStoreHotel }) {
+  const { setSelectedHotelData } = useHotelData();
+  const navigate = useNavigate();
 
-  // Check if itineraryData is available from the location or context
-  const itineraryData = location.state?.itineraryData || state.itineraryData;
-  const handleMarkerClick = () => {
-    const { hotel, handleMarkerClick } = props;
-    handleMarkerClick(hotel);
+  const handleStoreButtonClick = (event) => {
+    event.stopPropagation();
+    setSelectedHotelData(hotel);
+
+    navigate("/trip_summary");
   };
-
-  // const handleStoreButtonClick = (event) => {
-  //   event.stopPropagation();
-  //   const { hotel, onStoreHotel } = props;
-  //   onStoreHotel(hotel);
-  // };
-
-  const { hotel, isSelected, isHighlighted } = props;
 
   return (
     <div
       className={`hotelCard ${isSelected ? 'highlighted' : ''} ${isHighlighted ? 'highlighted' : ''}`}
-      onClick={() => handleMarkerClick()}
+      onClick={() => handleMarkerClick(hotel)}
     >
       <div className="hotelImageContainer">
         {hotel.photos && hotel.photos[0] ? (
@@ -43,18 +34,9 @@ function HotelCard(props) {
         <p className="hotelPrice">
           Price Range: {getPriceRange(hotel.price_level) || 'Not available (VISIT HOTEL WEBSITE)'}
         </p>
-        <Button variant="contained">
-          <Link
-            to="/trip_summary"
-            style={{ textDecoration: "none", color: "green" }}
-            state={{ hotelData: hotel, itineraryData: itineraryData }}
-          >
-            Looks good
-          </Link>
+        <Button variant="contained" size="small" onClick={handleStoreButtonClick}>
+          Looks Good!
         </Button>
-        {/* <Button variant="contained" size="small" onClick={this.handleStoreButtonClick}>
-            Looks Good!
-          </Button> */}
       </div>
     </div>
   );
