@@ -25,14 +25,21 @@ export function TripSummary(props) {
         <p>No flight selected</p>
       )}      
       {selectedHotelData ? (
-          <div className="hotelInfoContainer">
-            <h3 className="hotelName">{selectedHotelData.name}</h3>
+        <div className="flex justify-center items-center">
+          <div
+          className={`bg-white dark:bg-slate-600 p-6 rounded-lg shadow-lg transition duration-150 ease-in-out hover:shadow-xl space-y-3 border border-gray-200 mb-4 max-w-3xl`}
+        >
+          <img src={selectedHotelData.photos[0].getUrl()} alt="Hotel" className="hotelImage" />
+          <div className="flex flex-col md:flex-row justify-between items-stretch pt-2 space-y-2 md:space-y-0">
+            <h3 className="text-lg md:text-xl font-semibold">{selectedHotelData.name}</h3>
             <p className="hotelAddress">Address: {selectedHotelData.vicinity}</p>
             <p className="hotelRating">Rating: {selectedHotelData.rating}</p>
             <p className="hotelPrice">
               Price Range: {getPriceRange(selectedHotelData.price_level) || 'Not available (VISIT HOTEL WEBSITE)'}
             </p>
-        </div>
+          </div>
+        </div>      
+      </div>
       ) : (
         <p>No hotel selected</p>
       )}
