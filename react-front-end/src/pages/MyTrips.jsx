@@ -22,6 +22,10 @@ export function MyTrips() {
   return (
     <div>
       <img src={tripImage} alt="Hotel" className="w-full h-auto" style={{ height: '400px' }}/>
+        <div style={{ background: '#9C27B0' }} className="p-4 text-white">
+          <h1 className="text-4xl font-bold mb-4">Get your track</h1>
+          <p className="text-lg">See your achievements and think about what’s next!</p>
+        </div>
       <TripTable trips = {trips} />
       <Footer />
     </div>
