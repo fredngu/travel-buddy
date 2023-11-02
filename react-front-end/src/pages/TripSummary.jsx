@@ -5,6 +5,7 @@ import { useItineraryData } from "../components/utils/ItineraryDataContext";
 import { useHotelData } from "../components/utils/HotelDataContext";
 import { getPriceRange } from '../components/utils/PriceUtils';
 import Button from "@material-ui/core/Button";
+import "../styles/TripSummary.scss";
 
 export function TripSummary(props) {
   const location = useLocation();
@@ -59,12 +60,12 @@ export function TripSummary(props) {
         <p>No hotel selected</p>
       )}
       {/* "One Second Thought" button */}
-      <Button variant="contained" size="large" onClick={handleOneSecondThoughtClick}>
+      <Button className="light-purple-button" variant="contained" size="large" onClick={handleOneSecondThoughtClick}>
         One Second Thought
       </Button>
 
       {/* "Looks Good" button */}
-      <Button variant="contained" size="large" onClick={handleLooksGoodClick}>
+      <Button className="light-purple-button" variant="contained" size="large" onClick={handleLooksGoodClick}>
         Looks Good
       </Button>
     </div>
