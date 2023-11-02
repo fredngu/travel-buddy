@@ -7,7 +7,7 @@ export function Home() {
   const [authenticated, setauthenticated] = useState(null);
   useEffect(() => {
     const traveller_id = window.sessionStorage.getItem('traveller_id');
-    if (traveller_id) {
+    if (traveller_id > 0) {
       setauthenticated(traveller_id);
     }
   }, [authenticated])

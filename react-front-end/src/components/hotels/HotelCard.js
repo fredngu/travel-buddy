@@ -11,6 +11,8 @@ function HotelCard(props) {
 
   // Check if itineraryData is available from the location or context
   const itineraryData = location.state?.itineraryData || state.itineraryData;
+  console.log(itineraryData);
+  
   const handleMarkerClick = () => {
     const { hotel, handleMarkerClick } = props;
     handleMarkerClick(hotel);
@@ -21,7 +23,7 @@ function HotelCard(props) {
   //   const { hotel, onStoreHotel } = props;
   //   onStoreHotel(hotel);
   // };
-
+  
   const { hotel, isSelected, isHighlighted } = props;
 
   return (

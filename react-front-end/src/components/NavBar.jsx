@@ -9,8 +9,8 @@ import Logo from "../images/TravelBuddyLogo.png";
 import "../styles/NavBar.scss";
 import { mockData as itineraryData } from "../mockData/mockItineraryData";
 
-function NavBar() {
 
+function NavBar() {
   return (
     <AppBar position="static">
       <Container>
