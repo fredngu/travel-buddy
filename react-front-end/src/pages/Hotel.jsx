@@ -3,6 +3,7 @@ import HotelSearch from "../components/hotels/HotelSearchPage";
 import { useLocation } from "react-router-dom";
 import { useItineraryData } from "../components/utils/ItineraryDataContext";
 import hotelImage from '../images/hotel-hero.jpg';
+import Footer from "../components/Footer"
 
 export function Hotel() {
   const { state } = useLocation();
@@ -17,10 +18,11 @@ export function Hotel() {
 
   return (
     <>
-      <img src={hotelImage} alt="Hotel" className="w-full" />
+      <img src={hotelImage} alt="Hotel" className="w-full h-auto" style={{ height: '400px' }}/>
       <br />
       <h1 className="text-2xl font-semibold text-center mb-4">Find a good hotel</h1>
-      <HotelSearch />
+      <HotelSearch />      
+      <Footer />
     </>
   );
 }

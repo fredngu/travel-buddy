@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useItineraryData } from "../utils/ItineraryDataContext";
 import { Button } from "@mui/material";
 import flightImage from '../../images/flight-hero.jpg';
+import Footer from "../Footer"
 
 const FlightSearch = () => {
   const [flightData, setFlightData] = useState([]);
@@ -32,7 +33,7 @@ const FlightSearch = () => {
 
   return (
     <div className="relative min-h-[100vh] dark:bg-gray-700 dark:text-white">
-      <img src={flightImage} alt="Hotel" className="w-full" />
+      <img src={flightImage} alt="Hotel" className="w-full h-auto" style={{ height: '400px' }}/>
         <div style={{ background: '#9C27B0' }} className="p-4 text-white">
           <h1 className="text-4xl font-bold mb-4">Look for your Flight</h1>
           <p className="text-lg">Discover the best flight options!</p>
@@ -59,6 +60,7 @@ const FlightSearch = () => {
           What hotels are available?
         </Button>
       )}
+      <Footer />
     </div>
   );
 };

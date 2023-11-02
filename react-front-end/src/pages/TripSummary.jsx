@@ -7,6 +7,7 @@ import { getPriceRange } from '../components/utils/PriceUtils';
 import Button from "@material-ui/core/Button";
 import "../styles/TripSummary.scss";
 import tripImage from '../images/trip-summary.jpg';
+import Footer from "../components/Footer"
 
 export function TripSummary(props) {
   const location = useLocation();
@@ -36,7 +37,7 @@ export function TripSummary(props) {
   return (
     <div className="relative min-h-[100vh] dark:bg-gray-700 dark:text-white">
       
-      <img src={tripImage} alt="Hotel" className="w-full" />
+      <img src={tripImage} alt="Hotel" className="w-full h-auto" style={{ height: '400px' }} />
         <div style={{ background: '#9C27B0' }} className="p-4 text-white">
           <h1 className="text-4xl font-bold mb-4">Get your options</h1>
           <p className="text-lg">Here are your best choices!</p>
@@ -80,6 +81,7 @@ export function TripSummary(props) {
           </Button>
         </div>
       )}
+      <Footer />
     </div>
   );
 }
