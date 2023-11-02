@@ -17,14 +17,19 @@ const FlightSearch = () => {
     // We can add more logic here, e.g., opening a modal with detailed flight information
     dispatch({ type: "SET_ITINERARY_DATA", payload: flightItinerary });
   };
-
   const handleOneSecondThoughtClick = () => {
     // Redirect the user back to the Hotel page
     navigate("/");
   };
 
+  // Check if a flight itinerary is selected
+  const flightItinerary = state.itineraryData;
+  const isFlightSelected = !!flightItinerary;
+
+
   console.log(flightData);
   console.log(state.itineraryData);
+
   return (
     <div className="relative min-h-[100vh] dark:bg-gray-700 dark:text-white">
       <img src={flightImage} alt="Hotel" className="w-full" />
@@ -44,9 +49,12 @@ const FlightSearch = () => {
       <Button className="light-purple-button" variant="contained" size="large" onClick={handleOneSecondThoughtClick}>
         One Second Thought
       </Button>
-      <Button className="light-purple-button" variant="contained" onClick={() => navigate("/hotel")}>
-        Looks good
-      </Button>
+      {/* Conditionally render the "Looks Good" button if a flight itinerary is selected */}
+      {isFlightSelected && (
+        <Button className="light-purple-button" variant="contained" size="large" onClick={() => navigate("/hotel")}>
+          Looks Good
+        </Button>
+      )}
     </div>
   );
 };
