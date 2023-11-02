@@ -19,6 +19,8 @@ export function TripSummary(props) {
   // Check if itineraryData is available from the location or context
   const itineraryData = location.state?.itineraryData || state.itineraryData;
 
+  const areFlightAndHotelSelected = itineraryData && selectedHotelData;
+
   // Function to handle "One Second Thought" button click
   const handleOneSecondThoughtClick = () => {
     // Redirect the user back to the Hotel page
@@ -37,7 +39,7 @@ export function TripSummary(props) {
       <img src={tripImage} alt="Hotel" className="w-full" />
       <br />
       
-      <h1 className="text-2xl font-semibold text-center mb-4">Your Trip to {itineraryData.legs[0].destination.city}</h1>
+      <h1 className="text-2xl font-semibold text-center mb-4">Your Trip to {itineraryData?.legs[0]?.destination.city}</h1>
       {itineraryData ? (
         <FlightSummary itineraryData={itineraryData} destinationCity={itineraryData.legs[0].destination.city} />
       ) : (
@@ -46,9 +48,9 @@ export function TripSummary(props) {
       {selectedHotelData ? (
         <div className="flex justify-center items-center">
           <div
-          className={`bg-white dark:bg-slate-600 p-6 py-12 rounded-lg shadow-lg transition duration-150 ease-in-out hover:shadow-xl space-y-3 border border-gray-200 mb-4 max-w-3xl`}
+          className={`bg-white dark-bg-slate-600 p-6 py-12 rounded-lg shadow-lg transition duration-150 ease-in-out hover:shadow-xl space-y-3 border border-gray-200 mb-4 max-w-3xl`}
         >
-          <img src={selectedHotelData.photos[0].getUrl()} alt="Hotel" className="hotelImage" />
+          <img src={selectedHotelData.photos[0]?.getUrl()} alt="Hotel" className="hotelImage" />
           <div className="flex flex-col md:flex-row justify-between items-stretch pt-2 space-y-2 md:space-y-0">
             <h3 className="text-lg md:text-xl font-semibold">{selectedHotelData.name}</h3>
             <p className="hotelRating font-semibold">Address: <span className="font-semibold">{selectedHotelData.vicinity}</span></p>
@@ -62,15 +64,17 @@ export function TripSummary(props) {
       ) : (
         <p>No hotel selected</p>
       )}
-      {/* "One Second Thought" button */}
-      <Button className="light-purple-button" variant="contained" size="large" onClick={handleOneSecondThoughtClick}>
-        One Second Thought
-      </Button>
-
-      {/* "Looks Good" button */}
-      <Button className="light-purple-button" variant="contained" size="large" onClick={handleLooksGoodClick}>
-        Looks Good
-      </Button>
+      {/* Conditionally render buttons if both flight and hotel are selected */}
+      {areFlightAndHotelSelected && (
+        <div className="flex justify-between p-4">
+          <Button className="light-purple-button" variant="contained" size="large" onClick={handleOneSecondThoughtClick}>
+            One Second Thought
+          </Button>
+          <Button className="light-purple-button" variant="contained" size="large" onClick={handleLooksGoodClick}>
+            Looks Good
+          </Button>
+        </div>
+      )}
     </div>
   );
 }
