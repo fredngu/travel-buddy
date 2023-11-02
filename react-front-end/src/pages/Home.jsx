@@ -2,6 +2,7 @@
 import LoginForm from "../components/LoginForm";
 import { useState, useEffect } from 'react';
 import { Navigate } from "react-router-dom";
+import heroImage from '../images/main-hero.jpg';
 
 export function Home() {
   const [authenticated, setauthenticated] = useState(null);
@@ -16,6 +17,7 @@ export function Home() {
   } else {
     return (
       <div>
+        <img src={heroImage} alt="HeroImage" className="w-full" />
         <LoginForm />
       </div>
     )

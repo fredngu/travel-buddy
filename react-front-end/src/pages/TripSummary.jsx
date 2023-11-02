@@ -6,6 +6,7 @@ import { useHotelData } from "../components/utils/HotelDataContext";
 import { getPriceRange } from '../components/utils/PriceUtils';
 import Button from "@material-ui/core/Button";
 import "../styles/TripSummary.scss";
+import tripImage from '../images/trip-summary.jpg';
 
 export function TripSummary(props) {
   const location = useLocation();
@@ -27,11 +28,13 @@ export function TripSummary(props) {
   // Function to handle "Looks Good" button click
   const handleLooksGoodClick = () => {
     // Redirect the user to the My Trip page
-    navigate("/mytrip"); // You should adjust the route as per your application's routing configuration
+    navigate("/trips"); // You should adjust the route as per your application's routing configuration
   };
 
   return (
     <div className="relative min-h-[100vh] dark:bg-gray-700 dark:text-white">
+      
+      <img src={tripImage} alt="Hotel" className="w-full" />
       <br />
       
       <h1 className="text-2xl font-semibold text-center mb-4">Your Trip to {itineraryData.legs[0].destination.city}</h1>

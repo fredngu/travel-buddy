@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import HotelSearch from "../components/hotels/HotelSearchPage";
 import { useLocation } from "react-router-dom";
 import { useItineraryData } from "../components/utils/ItineraryDataContext";
+import hotelImage from '../images/hotel-hero.jpg';
 
 export function Hotel() {
   const { state } = useLocation();
@@ -16,6 +17,7 @@ export function Hotel() {
 
   return (
     <>
+      <img src={hotelImage} alt="Hotel" className="w-full" />
       <br />
       <h1 className="text-2xl font-semibold text-center mb-4">Find a good hotel</h1>
       <HotelSearch />

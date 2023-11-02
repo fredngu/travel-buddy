@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import TripTable from "../components/TripTable";
+import tripImage from '../images/trips-hero.jpg';
 
 
 export function MyTrips() {
@@ -19,6 +20,7 @@ export function MyTrips() {
 
   return (
     <div>
+      <img src={tripImage} alt="Hotel" className="w-full" />
       <TripTable trips = {trips} />
     </div>
   )

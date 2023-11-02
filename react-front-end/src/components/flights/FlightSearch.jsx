@@ -3,6 +3,7 @@ import { FlightList, Input } from "../flights";
 import { useNavigate } from "react-router-dom";
 import { useItineraryData } from "../utils/ItineraryDataContext";
 import { Button } from "@mui/material";
+import flightImage from '../../images/flight-hero.jpg';
 
 const FlightSearch = () => {
   const [flightData, setFlightData] = useState([]);
@@ -17,10 +18,16 @@ const FlightSearch = () => {
     dispatch({ type: "SET_ITINERARY_DATA", payload: flightItinerary });
   };
 
+  const handleOneSecondThoughtClick = () => {
+    // Redirect the user back to the Hotel page
+    navigate("/");
+  };
+
   console.log(flightData);
   console.log(state.itineraryData);
   return (
     <div className="relative min-h-[100vh] dark:bg-gray-700 dark:text-white">
+      <img src={flightImage} alt="Hotel" className="w-full" />
       <div className="pb-[2.5rem]">
         <div className="md:px-12 ">
           <Input
@@ -34,7 +41,10 @@ const FlightSearch = () => {
         isLoading={isLoading}
         onFlightCardClick={onFlightCardClick}
       />
-      <Button variant="contained" onClick={() => navigate("/hotel")}>
+      <Button className="light-purple-button" variant="contained" size="large" onClick={handleOneSecondThoughtClick}>
+        One Second Thought
+      </Button>
+      <Button className="light-purple-button" variant="contained" onClick={() => navigate("/hotel")}>
         Looks good
       </Button>
     </div>
