@@ -1,12 +1,12 @@
 // ItineraryDataContext.js
 import React, { createContext, useContext, useReducer } from "react";
-
+import {mockData as mockItineraryData} from "../../mockData/mockItineraryData"
 // Create a context
 const ItineraryDataContext = createContext();
 
-// Initial state
+// Initial statez
 const initialState = {
-  itineraryData: null,
+  itineraryData: mockItineraryData,
 };
 
 // Reducer function to update state

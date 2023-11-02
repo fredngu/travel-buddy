@@ -1,20 +1,9 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import React, { useEffect, useState }from "react";
+import React, { useEffect }from "react";
 import axios from 'axios';
 
 const Profile = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
-  const [ travellers, setTravellers ] = useState([]);
- 
-  const getTravellers = async () => {
-    try {
-      const response = await fetch("http://localhost:3000/travellers")
-      const travellerData = await response.json()
-      setTravellers(travellerData)
-    } catch (err) {
-      console.error(err.message);
-    }
-  }
 
   useEffect(() => {
     if (user) {
@@ -23,16 +12,7 @@ const Profile = () => {
         window.sessionStorage.setItem('traveller_id', data[0].traveller_id)
       })
     }
-    if (!isAuthenticated) {
-      window.sessionStorage.clear()
-    }
-  }, [user, isAuthenticated]);
-
-  useEffect(() => {
-    getTravellers()
-  }, []);
-
-  console.log(travellers);
+  }, [user]);
 
   if (isLoading) {
     return <div>Loading ...</div>;
@@ -42,6 +22,7 @@ const Profile = () => {
     isAuthenticated && (
       <div>
         <h2>{user.name}</h2>
+        <p>{user.email}</p>
       </div>
     )
   );

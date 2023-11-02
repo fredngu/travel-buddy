@@ -8,12 +8,31 @@ function HotelCard({ hotel, isSelected, isHighlighted, handleMarkerClick, onStor
   const { setSelectedHotelData } = useHotelData();
   const navigate = useNavigate();
 
+<<<<<<< HEAD
   const handleStoreButtonClick = (event) => {
     event.stopPropagation();
     setSelectedHotelData(hotel);
 
     navigate("/trip_summary");
   };
+=======
+  // Check if itineraryData is available from the location or context
+  const itineraryData = location.state?.itineraryData || state.itineraryData;
+  console.log(itineraryData);
+  
+  const handleMarkerClick = () => {
+    const { hotel, handleMarkerClick } = props;
+    handleMarkerClick(hotel);
+  };
+
+  // const handleStoreButtonClick = (event) => {
+  //   event.stopPropagation();
+  //   const { hotel, onStoreHotel } = props;
+  //   onStoreHotel(hotel);
+  // };
+  
+  const { hotel, isSelected, isHighlighted } = props;
+>>>>>>> 36f391d8a01434f28efcee3dd3c6ad348da977ec
 
   return (
     <div
