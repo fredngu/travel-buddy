@@ -1,6 +1,6 @@
 import { ArrowLongRightIcon } from "@heroicons/react/24/solid";
 
-export default function FlightSummary({ itineraryData }) {
+export default function FlightSummary({ itineraryData, destinationCity }) {
   const formatTime = (dateStr) => {
     const date = new Date(dateStr);
     return date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
@@ -14,7 +14,7 @@ export default function FlightSummary({ itineraryData }) {
 
   return (
     <div className="bg-white dark:bg-slate-600 p-6 rounded-lg shadow-lg transition duration-150 ease-in-out hover:shadow-xl space-y-3 border border-gray-200 mb-4">
-      {itineraryData.legs.map((leg, legIndex) => (
+      {itineraryData.legs.map((leg, legIndex) => (        
         <div
           key={legIndex}
           className="flex flex-col md:flex-row justify-between items-stretch pt-2 space-y-2 md:space-y-0"
@@ -62,6 +62,11 @@ export default function FlightSummary({ itineraryData }) {
                 </>
               )}{" "}
             </p>
+          <p>
+            <strong className="text-xl md:2xl">
+              {destinationCity}
+            </strong>
+          </p>
           </div>
         </div>
       ))}
