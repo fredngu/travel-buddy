@@ -88,8 +88,9 @@ class HotelSearch extends Component {
   };
 
   onStoreHotel = (hotel) => {
-    // Store the hotel data in the state or pass it to another part of your application
-    // You can define your storage logic here
+    // Store the selected hotel data in the component state
+    this.setState({ selectedHotelData: hotel });
+    // You can also pass it to other parts of your application if needed
     console.log('Storing hotel:', hotel);
   };
 
