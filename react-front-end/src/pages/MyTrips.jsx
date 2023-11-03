@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import TripTable from "../components/TripTable";
+import ComparisonTable from "../components/ComparisonTable"
 import tripImage from '../images/trips-hero.jpg';
 import Footer from "../components/Footer"
 
@@ -28,7 +29,8 @@ export function MyTrips() {
       setComparisons(data)
     })
   }, []);
-  console.log(comparisons)
+  console.log(comparisons);
+
   return (
     <div>
       <img src={tripImage} alt="Hotel" className="w-full h-auto" style={{ height: '400px' }}/>
@@ -37,6 +39,7 @@ export function MyTrips() {
           <p className="text-lg">See your achievements and think about what’s next!</p>
         </div>
       <TripTable trips = {trips} />
+      <ComparisonTable comparisons = {comparisons} />
       <Footer />
     </div>
   )
