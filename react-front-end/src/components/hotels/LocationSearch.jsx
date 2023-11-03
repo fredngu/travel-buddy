@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
+import PlacesAutocomplete, {
+  geocodeByAddress,
+  getLatLng,
+} from 'react-places-autocomplete';
 
 function LocationSearch(props) {
   const [location, setLocation] = useState('');
@@ -35,8 +38,10 @@ function LocationSearch(props) {
                 backgroundColor: suggestion.active ? '#41b6e6' : '#fff',
               };
               return (
-                <div 
-                  {...getSuggestionItemProps(suggestion, { style })} key={suggestion.description}>
+                <div
+                  {...getSuggestionItemProps(suggestion, { style })}
+                  key={suggestion.description}
+                >
                   {suggestion.description}
                 </div>
               );

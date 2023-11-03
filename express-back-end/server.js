@@ -2,7 +2,7 @@ const Express = require('express');
 const App = Express();
 const BodyParser = require('body-parser');
 const db = require('./db/queries');
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 
 // Express Configuration
 App.use(BodyParser.urlencoded({ extended: false }));
@@ -58,7 +58,30 @@ App.post('/travellers', async (req, res) => {
   res.send(checkUser.rows)
 })
 
-App.post('/trip')
+// Define a route for inserting trip data into the database
+App.post('/trips', async (req, res) => {
+  const tripData = req.body;
+
+  // Assuming we have access to hotelPrices and flightPrices arrays
+  const hotelPrices = getHotelPrices(tripData.city_name, tripData.start_date, tripData.end_date);
+  const flightPrices = getFlightPrices(tripData.city_name, tripData.start_date, tripData.end_date);
+
+  // Calculate hotel_lowest, hotel_highest, flight_lowest, and flight_highest
+  const hotel_lowest = Math.min(...hotelPrices);
+  const hotel_highest = Math.max(...hotelPrices);
+  const flight_lowest = Math.min(...flightPrices);
+  const flight_highest = Math.max(...flightPrices);
+
+  // Insert trip data into the database using our database queries
+  try {
+    const newTrip = await db.query('INSERT INTO trip(trip_name, traveller_id, city_name, start_date, end_date, hotel_lowest, hotel_highest, flight_lowest, flight_highest, city_image_url) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *',
+      [tripData.trip_name, tripData.traveller_id, tripData.city_name, tripData.start_date, tripData.end_date, hotel_lowest, hotel_highest, flight_lowest, flight_highest, tripData.city_image_url]);
+
+    res.json({ success: true, message: 'Trip data inserted successfully', data: newTrip.rows });
+  } catch (error) {
+    res.status(500).json({ success: false, message: 'Error inserting trip data', error: error.message });
+  }
+});
 
 App.listen(PORT, () => {
   // eslint-disable-next-line no-console
