@@ -1,12 +1,13 @@
 //Flights Route
 import FlightSearch from "../components/flights/FlightSearch";
 
+import Footer from "../components/Footer"
+
 export function Home() {
   return (
-    <>
-      <h1>Look for your Flight</h1>
+    <>        
       <FlightSearch />
+      <Footer />
     </>
-
   )
 }
