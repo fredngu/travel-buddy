@@ -8,6 +8,8 @@ import Footer from "../components/Footer"
 
 export function MyTrips() {
   const [trips, setTrips] = useState([])
+  const [comparisons, setComparisons] = useState([])
+
   useEffect(() => {
     // let traveller_id = window.sessionStorage.getItem('traveller_id')
     let traveller_id = 20;
@@ -16,9 +18,17 @@ export function MyTrips() {
       setTrips(data)
     })
   }, []);
-
   console.log(trips);
 
+  useEffect(() => {
+    // let traveller_id = window.sessionStorage.getItem('traveller_id')
+    let traveller_id = 20;
+    axios.get(`/comparisons/${traveller_id}`)
+    .then(({data}) => {
+      setComparisons(data)
+    })
+  }, []);
+  console.log(comparisons)
   return (
     <div>
       <img src={tripImage} alt="Hotel" className="w-full h-auto" style={{ height: '400px' }}/>
