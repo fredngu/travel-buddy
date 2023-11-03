@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useItineraryData } from "../components/utils/ItineraryDataContext";
 import { useHotelData } from "../components/utils/HotelDataContext";
 import { getPriceRange } from '../components/utils/PriceUtils';
-import Button from "@material-ui/core/Button";
+import { Button } from "@mui/material";
 import "../styles/TripSummary.scss";
 import tripImage from '../images/trip-summary.jpg';
 import Footer from "../components/Footer"
