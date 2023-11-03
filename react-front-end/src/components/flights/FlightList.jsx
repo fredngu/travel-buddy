@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import PacmanLoader from "react-spinners/PacmanLoader";
 import { ArrowLongRightIcon } from "@heroicons/react/24/solid";
-import { useNavigate } from "react-router-dom";
 
 const FlightList = ({ flightData, isLoading, onFlightCardClick }) => {
   const [displayCount, setDisplayCount] = useState(5);
   const [selectedFlight, setSelectedFlight] = useState(null);
-  const navigate = useNavigate();
 
   const formatTime = (dateStr) => {
     const date = new Date(dateStr);
