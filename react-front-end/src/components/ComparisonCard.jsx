@@ -26,6 +26,7 @@ function getComparisonTrip(trips, allTrips) {
     if (trips.includes(trip['trip_id'])) {
       return trip;
     }
+    return false
   });
   console.log(tripList);
   return tripList;
@@ -37,7 +38,6 @@ const Demo = styled('div')(({ theme }) => ({
 
 export default function ComparisonCard(props) {
   const { comparisons, allTrips } = props;
-  console.log(comparisons);
   const compareTrips = getComparisonList(comparisons);
   const tripList = getComparisonTrip(compareTrips, allTrips);
   return (

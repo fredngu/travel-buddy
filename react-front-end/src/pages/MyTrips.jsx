@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import TripTable from "../components/TripTable";
-import ComparisonTable from "../components/ComparisonTable"
 import tripImage from '../images/trips-hero.jpg';
 import Footer from "../components/Footer"
 import ComparisonCard from "../components/ComparisonCard"
@@ -14,21 +13,26 @@ export function MyTrips() {
   const [comparisons, setComparisons] = useState([])
 
   useEffect(() => {
-    // let traveller_id = window.sessionStorage.getItem('traveller_id')
-    let traveller_id = 20;
-    axios.get(`/trips/${traveller_id}`)
+    const fetchData = async () => {
+      let traveller_id = 20;
+      await axios.get(`/trips/${traveller_id}`)
       .then(({ data }) => {
         setTrips(data);
       });
-    // let traveller_id = window.sessionStorage.getItem('traveller_id')
-    axios.get(`/comparisons/${traveller_id}`)
+      await axios.get(`/comparisons/${traveller_id}`)
       .then(({ data }) => {
         setComparisons(data);
       });
-    axios.get(`/trips/all`)
+      await axios.get(`/trips/all`)
       .then(({ data }) => {
         setAllTrips(data);
       });
+    };
+    fetchData()
+    // let traveller_id = window.sessionStorage.getItem('traveller_id')
+    
+
+    // let traveller_id = window.sessionStorage.getItem('traveller_id')
   }, []);
   console.log(trips);
   console.log(allTrips)
