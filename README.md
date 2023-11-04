@@ -7,10 +7,10 @@ Travel Buddy allows you to easily search, organize and plan trips from start to 
 
 ## Features
 
-✈️ Flight Search - Find the best flights using real-time data from Skyscanner
-🏨 Hotel Search - Search hotels and rental listings with TripAdvisor integration
-🌍 Location Search - Easily find destinations with integrated Google Maps
-🔐 User Profiles - Securely login and access your trips with Auth0
+ ✈️ Flight Search - Find the best flights using real-time data from Skyscanner
+ 🏨 Hotel Search - Search hotels and rental listings with TripAdvisor integration
+ 🌍 Location Search - Easily find destinations with integrated Google Maps
+ 🔐 User Profiles - Securely login and access your trips with Auth0
 
 ## Built With
 
