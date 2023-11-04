@@ -41,6 +41,18 @@ App.get('/trips/:id', async (req, res) => {
 
 })
 
+App.get('/comparisons/:id', async (req, res) => {
+  try {
+    const traveller_id = req.params.id
+    console.log(traveller_id)
+    const allComparisons = await db.query('SELECT * FROM comparison WHERE traveller_id = $1', [traveller_id]);
+    res.json(allComparisons.rows)
+  } catch (err) {
+    console.error(err.message)
+  }
+
+})
+
 
 App.post('/travellers', async (req, res) => {
   const user = req.body;

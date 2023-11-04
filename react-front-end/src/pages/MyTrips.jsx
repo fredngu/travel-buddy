@@ -2,12 +2,15 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import TripTable from "../components/TripTable";
+import ComparisonTable from "../components/ComparisonTable"
 import tripImage from '../images/trips-hero.jpg';
 import Footer from "../components/Footer"
 
 
 export function MyTrips() {
   const [trips, setTrips] = useState([])
+  const [comparisons, setComparisons] = useState([])
+
   useEffect(() => {
     // let traveller_id = window.sessionStorage.getItem('traveller_id')
     let traveller_id = 20;
@@ -16,8 +19,17 @@ export function MyTrips() {
       setTrips(data)
     })
   }, []);
-
   console.log(trips);
+
+  useEffect(() => {
+    // let traveller_id = window.sessionStorage.getItem('traveller_id')
+    let traveller_id = 20;
+    axios.get(`/comparisons/${traveller_id}`)
+    .then(({data}) => {
+      setComparisons(data)
+    })
+  }, []);
+  console.log(comparisons);
 
   return (
     <div>
@@ -27,6 +39,7 @@ export function MyTrips() {
           <p className="text-lg">See your achievements and think about what’s next!</p>
         </div>
       <TripTable trips = {trips} />
+      <ComparisonTable comparisons = {comparisons} />
       <Footer />
     </div>
   )
