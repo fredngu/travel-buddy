@@ -1,5 +1,5 @@
 # Travel Buddy
-# A Travel Planner Application
+**A Travel Planner Application**
 
 Welcome to Travel Buddy - your new trip planning buddy! 🗺️
 
@@ -14,17 +14,17 @@ Travel Buddy allows you to easily search, organize and plan trips from start to 
 
 ## Built With
 
-##Frontend
+**Frontend**
 * React - Frontend framework
 * Tailwind CSS - Styling
 * Material UI - Component library
 
-## Backend
+**Backend**
 * Node.js - Runtime environment
 * Express - Web application framework
 * Postgres - Database
 
-## APIs
+**APIs**
 * Skyscanner - Flight data
 * Google Maps - Hotels, listings, maps & location data
 * Auth0 - User authentication
@@ -49,7 +49,7 @@ In the browser, you can click on the button and see the data get loaded.
 
 The main important bit is that the React project has `proxy` set to `localhost:8080` in the `package.json` file, and that the Express app listens to port 8080 in `server.js`. Take a look!
 
-## Installation
+**Installation**
 
 1. Clone the repository:
 
@@ -78,7 +78,7 @@ As soon as the dependencies are installed, your Express server can serve JSON an
 
 You should install and configure a database driver for Postgres as we have using in this progect or any other database as, MySQL, MongoDB etc to get data interacting and make this app work correctly, you can find scripts used to run queries to create each table anda data used to interact in our application.
 
-## License
+**License**
 
 This project is licensed under MIT - see LICENSE.md for more details.
 
@@ -88,3 +88,4 @@ Inspiration and resources from:
 * Airbnb
 * Expedia
 * Unsplash (travel photos)
+* React + Express No-Fluff Boilerplate - LHL
