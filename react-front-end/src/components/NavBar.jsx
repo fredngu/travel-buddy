@@ -7,9 +7,11 @@ import Profile from "../api/profile";
 import Logo from "../images/TravelBuddyLogo.png";
 import "../styles/NavBar.scss";
 import { mockData as itineraryData } from "../mockData/mockItineraryData";
+import { useAuth0 } from "@auth0/auth0-react";
 
 
 function NavBar() {
+  const { isAuthenticated } = useAuth0();
   return (
     <AppBar position="static">
       <Container>
@@ -66,15 +68,16 @@ function NavBar() {
                 Trip Summary
               </Link>
             </Button>
+            {!isAuthenticated ?
             <Button color="inherit">
               <LoginButton />
             </Button>
+            :
             <Button color="inherit">
               <LogoutButton />
             </Button>
-            <Button color="inherit">
-              <Profile />
-            </Button>
+            }
+            <Profile />
         </Toolbar>
       </Container>
     </AppBar>

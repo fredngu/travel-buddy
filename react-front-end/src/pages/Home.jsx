@@ -2,8 +2,10 @@
 import LoginForm from "../components/LoginForm";
 import heroImage from '../images/main-hero.jpg';
 import Footer from "../components/Footer"
+import { useAuth0 } from "@auth0/auth0-react";
 
 export function Home() {
+    const { isAuthenticated } = useAuth0();
     return (
       <div>
         <img src={heroImage} alt="HeroImage" className="w-full h-auto" style={{ height: '400px' }} />
@@ -11,7 +13,7 @@ export function Home() {
           <h1 className="text-4xl font-bold mb-4">Welcome to Travel Buddy</h1>
           <p className="text-lg">Discover amazing trips and organize your dream vacation today!</p>
         </div>
-        <LoginForm />
+        {!isAuthenticated && <LoginForm />}
         <Footer />
       </div>
     )
