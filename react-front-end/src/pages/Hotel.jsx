@@ -24,7 +24,7 @@ export function Hotel() {
           <h1 className="text-4xl font-bold mb-4">Plan your stay</h1>
           <p className="text-lg">Nothing better than relaxing in style</p>
         </div>
-      <h1 className="text-2xl font-semibold text-center mb-4">Find a good hotel</h1>
+      <h1 className="text-2xl font-semibold text-center mt-4">Find a good hotel</h1>
       <HotelSearch />      
       <Footer />
     </>

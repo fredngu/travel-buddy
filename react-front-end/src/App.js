@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import NavBar from "./components/NavBar";
-import Flight from "./components/flights//FlightSearch";
+import Flight from "./components/flights/FlightSearch";
 import { Route, Routes } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { MyTrips } from "./pages/MyTrips";
