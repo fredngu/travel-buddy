@@ -7,9 +7,8 @@ CREATE TABLE trip (
   city_name VARCHAR(255) NOT NULL,
   start_date DATE NOT NULL,
   end_date DATE NOT NULL,
-  hotel_lowest INTEGER NOT NULL,
-  hotel_highest INTEGER NOT NULL,
-  flight_lowest INTEGER NOT NULL,
-  flight_highest INTEGER NOT NULL,
+  hotel_price VARCHAR(255),
+  hotel_name VARCHAR(255) NOT NULL,
+  flight_price INTEGER NOT NULL,
   city_image_url VARCHAR(2048) NOT NULL
 );

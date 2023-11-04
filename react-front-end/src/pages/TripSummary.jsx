@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useItineraryData } from "../components/utils/ItineraryDataContext";
 import { useHotelData } from "../components/utils/HotelDataContext";
 import { getPriceRange } from '../components/utils/PriceUtils';
-import { Button } from "@mui/material";
+import { Button, sliderClasses } from "@mui/material";
 import "../styles/TripSummary.scss";
 import tripImage from '../images/trip-summary.jpg';
 import Footer from "../components/Footer"
@@ -33,6 +33,16 @@ export function TripSummary(props) {
     // Redirect the user to the My Trip page
     navigate("/trips"); // You should adjust the route as per your application's routing configuration
   };
+
+  const pushTripToDB = (itineraryData, hotelData) => {
+    const hotelPrice = getPriceRange(hotelData.price_level)
+    //itinerary -> destination
+    //hotel -> name + price_level (getPriceRange)
+    console.log(itineraryData)
+    console.log(hotelData)
+  }
+
+  pushTripToDB(itineraryData, selectedHotelData)
 
   return (
     <div className="relative min-h-[100vh] dark:bg-gray-700 dark:text-white">
