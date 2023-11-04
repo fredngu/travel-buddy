@@ -33,14 +33,14 @@ function NavBar() {
               redirect_uri: window.location.origin,
             }}
           >
-              <Button color="inherit">
-                <Link
+            <Button color="inherit">
+              <Link
                 to="/"
                 style={{ textDecoration: "none", color: "white" }}
               >
-                  Home
-                </Link>
-              </Button>
+                Home
+              </Link>
+            </Button>
             <Button color="inherit">
               <Link
                 to="/trips"
