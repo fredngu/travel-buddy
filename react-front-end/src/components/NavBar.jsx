@@ -1,12 +1,12 @@
 import React from "react";
 import { AppBar, Toolbar, Button, Typography, Container } from "@mui/material";
 import { Link } from "react-router-dom";
-import { Auth0Provider } from "@auth0/auth0-react";
 import LoginButton from "../api/login";
 import LogoutButton from "../api/logout";
 import Profile from "../api/profile";
 import Logo from "../images/TravelBuddyLogo.png";
 import "../styles/NavBar.scss";
+import { mockData as itineraryData } from "../mockData/mockItineraryData";
 
 
 function NavBar() {
@@ -25,13 +25,6 @@ function NavBar() {
           <Typography variant="h6" component="div" style={{ flexGrow: 1 }}>
             Travel Buddy
           </Typography>
-          <Auth0Provider
-            domain="dev-6jhms23po3hoo2lj.us.auth0.com"
-            clientId="TybkdIkTe6Yd8FMUl78uDXEy6dREGsry"
-            authorizationParams={{
-              redirect_uri: window.location.origin,
-            }}
-          >
             <Button color="inherit">
               <Link
                 to="/"
@@ -59,6 +52,7 @@ function NavBar() {
             <Button color="inherit">
               <Link
                 to="/hotel"
+                state={{ itineraryData: itineraryData }}
                 style={{ textDecoration: "none", color: "white" }}
               >
                 Hotel
@@ -81,7 +75,6 @@ function NavBar() {
             <Button color="inherit">
               <Profile />
             </Button>
-          </Auth0Provider>
         </Toolbar>
       </Container>
     </AppBar>
