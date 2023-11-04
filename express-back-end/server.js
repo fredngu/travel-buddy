@@ -20,9 +20,9 @@ App.get('/api/data', (req, res) => res.json({
   message: "Seems to work!",
 }));
 
-App.get('/travellers', async (req, res) => {
+App.get('/trips/all', async (req, res) => {
   try {
-    const allUsers = await db.query('SELECT * FROM traveller ORDER BY traveller_id ASC');
+    const allUsers = await db.query('SELECT * FROM trip');
     res.json(allUsers.rows)
   } catch (err) {
     console.error(err.message)
