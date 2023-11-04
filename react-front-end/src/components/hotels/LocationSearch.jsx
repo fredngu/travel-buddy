@@ -1,55 +1,80 @@
-import React, { useState } from 'react';
-import PlacesAutocomplete, {
-  geocodeByAddress,
-  getLatLng,
-} from 'react-places-autocomplete';
+import React, { useState, useEffect } from 'react';
 
 function LocationSearch(props) {
   const [location, setLocation] = useState('');
+  const [predictions, setPredictions] = useState([]);
 
-  const handleLocationChange = (newLocation) => {
-    setLocation(newLocation);
-  };
+  useEffect(() => {
+    // Create a function to initialize the autocomplete
+    function initAutocomplete() {
+      const input = document.getElementById('autocomplete-input');
+      const options = {
+        types: ['(cities)'], // Limit predictions to cities
+      };
+      const autocomplete = new window.google.maps.places.Autocomplete(input, options);
 
-  const handleLocationSelect = async (newLocation) => {
-    setLocation(newLocation);
-    try {
-      const results = await geocodeByAddress(newLocation);
-      const newCoordinates = await getLatLng(results[0]);
-      props.onLocationChange(newCoordinates);
-    } catch (error) {
-      console.error('Error fetching coordinates:', error);
+      autocomplete.addListener('place_changed', () => {
+        const place = autocomplete.getPlace();
+        setLocation(place.formatted_address);
+        props.onLocationChange({
+          lat: place.geometry.location.lat(),
+          lng: place.geometry.location.lng(),
+        });
+        setPredictions([]); // Clear predictions
+      });
     }
+
+    // Ensure the API is loaded
+    if (window.google) {
+      initAutocomplete();
+    } else {
+      // If the API is not loaded yet, listen for the 'load' event
+      window.addEventListener('load', initAutocomplete);
+    }
+
+    return () => {
+      // Cleanup by removing the script element
+    };
+  }, [props]);
+
+  const handleInputChange = (event) => {
+    setLocation(event.target.value);
+
+    // Fetch predictions when the input changes
+    const service = new window.google.maps.places.AutocompleteService();
+    service.getPlacePredictions(
+      { input: event.target.value, types: ['(cities)'] },
+      (predictions) => {
+        setPredictions(predictions || []);
+      }
+    );
   };
 
   return (
-    <PlacesAutocomplete value={location} onChange={handleLocationChange} onSelect={handleLocationSelect}>
-      {({ getInputProps, suggestions, getSuggestionItemProps }) => (
-        <div>
-          <input
-            {...getInputProps({
-              placeholder: 'Enter location (e.g., city name)',
-              className: 'input-field',
-            })}
-          />
-          <div>
-            {suggestions.map((suggestion) => {
-              const style = {
-                backgroundColor: suggestion.active ? '#41b6e6' : '#fff',
-              };
-              return (
-                <div
-                  {...getSuggestionItemProps(suggestion, { style })}
-                  key={suggestion.description}
-                >
-                  {suggestion.description}
-                </div>
-              );
-            })}
-          </div>
+    <div className="relative w-full">
+      <input
+        id="autocomplete-input"
+        placeholder="Enter location (e.g., city name)"
+        value={location}
+        onChange={handleInputChange}
+        className="input-field"
+      />
+      {predictions.length > 0 && (
+        <div className="autocomplete-predictions">
+          {predictions.map((prediction) => (
+            <div
+              key={prediction.place_id}
+              onClick={() => {
+                setLocation(prediction.description);
+                setPredictions([]);
+              }}
+            >
+              {prediction.description}
+            </div>
+          ))}
         </div>
       )}
-    </PlacesAutocomplete>
+    </div>
   );
 }
 
