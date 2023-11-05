@@ -3,3 +3,16 @@
   max-height: 50px;
 }
 
+.link {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s, text-decoration 0.3s;
+
+  &:hover {
+    color: #deb887;
+  }
+
+  &.selected {
+    color: #5f9ea0;
+  }
+}

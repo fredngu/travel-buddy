@@ -1,5 +1,6 @@
 import React from "react";
 import { AppBar, Toolbar, Button, Typography, Container } from "@mui/material";
+import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import LoginButton from "../api/login";
 import LogoutButton from "../api/logout";
@@ -12,6 +13,13 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 function NavBar() {
   const { isAuthenticated } = useAuth0();
+  const location = useLocation();
+
+  // Define a function to check if a link is active
+  const isActiveLink = (path) => {
+    return location.pathname === path;
+  };
+
   return (
     <AppBar position="static">
       <Container>
@@ -27,57 +35,57 @@ function NavBar() {
           <Typography variant="h6" component="div" style={{ flexGrow: 1 }}>
             Travel Buddy
           </Typography>
-            <Button color="inherit">
-              <Link
-                to="/"
-                style={{ textDecoration: "none", color: "white" }}
-              >
-                Home
-              </Link>
+          <Button color="inherit">
+            <Link
+              to="/"
+              className={`link ${isActiveLink("/") ? "selected" : ""}`}
+            >
+              Home
+            </Link>
+          </Button>
+          <Button color="inherit">
+            <Link
+              to="/trips"
+              className={`link ${isActiveLink("/trips") ? "selected" : ""}`}
+            >
+              Trips
+            </Link>
+          </Button>
+          <Button color="inherit">
+            <Link
+              to="/flight"
+              className={`link ${isActiveLink("/flight") ? "selected" : ""}`}
+            >
+              Flight
+            </Link>
+          </Button>
+          <Button color="inherit">
+            <Link
+              to="/hotel"
+              state={{ itineraryData: itineraryData }}
+              className={`link ${isActiveLink("/hotel") ? "selected" : ""}`}
+            >
+              Hotel
+            </Link>
+          </Button>
+          <Button color="inherit">
+            <Link
+              to="/trip_summary"
+              className={`link ${isActiveLink("/trip_summary") ? "selected" : ""}`}
+            >
+              Trip Summary
+            </Link>
             </Button>
-            <Button color="inherit">
-              <Link
-                to="/trips"
-                style={{ textDecoration: "none", color: "white" }}
-              >
-                Trips
-              </Link>
-            </Button>
-            <Button color="inherit">
-              <Link
-                to="/flight"
-                style={{ textDecoration: "none", color: "white" }}
-              >
-                Flight
-              </Link>
-            </Button>
-            <Button color="inherit">
-              <Link
-                to="/hotel"
-                state={{ itineraryData: itineraryData }}
-                style={{ textDecoration: "none", color: "white" }}
-              >
-                Hotel
-              </Link>
-            </Button>
-            <Button color="inherit">
-              <Link
-                to="/trip_summary"
-                style={{ textDecoration: "none", color: "white" }}
-              >
-                Trip Summary
-              </Link>
-            </Button>
-            {!isAuthenticated ?
+              {!isAuthenticated ? (
             <Button color="inherit">
               <LoginButton />
             </Button>
-            :
+          ) : (
             <Button color="inherit">
               <LogoutButton />
             </Button>
-            }
-            <Profile />
+          )}
+          <Profile />
         </Toolbar>
       </Container>
     </AppBar>
