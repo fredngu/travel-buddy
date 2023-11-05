@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import FlightSummary from "../components/FlightSummary";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useItineraryData } from "../components/utils/ItineraryDataContext";
