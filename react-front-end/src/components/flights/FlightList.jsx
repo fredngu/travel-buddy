@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PacmanLoader from "react-spinners/PacmanLoader";
 import { ArrowLongRightIcon } from "@heroicons/react/24/solid";
+import { Button } from '@mui/material';
 
 const FlightList = ({ flightData, isLoading, onFlightCardClick }) => {
   const [displayCount, setDisplayCount] = useState(5);
@@ -136,12 +137,9 @@ const FlightList = ({ flightData, isLoading, onFlightCardClick }) => {
         ))}
         <div className="flex justify-center mt-4 w-full">
           {flightData.length > displayCount && (
-            <button
-              onClick={handleShowMore}
-              className="py-2 px-4 border border-gray-300 dark:bg-slate-500 dark:hover:bg-slate-700 rounded-xl bg-gray hover:bg-gray-200 focus:outline-none focus:ring focus:ring-gray-300 transition duration-150 ease-in-out"
-            >
-              Show More
-            </button>
+            <Button variant="contained" size="large" onClick={handleShowMore}>
+              See more
+            </Button>
           )}
         </div>
       </div>
