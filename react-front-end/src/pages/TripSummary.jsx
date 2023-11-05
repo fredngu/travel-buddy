@@ -33,7 +33,7 @@ export function TripSummary(props) {
   const handleLooksGoodClick = () => {
     pushTripToDB(itineraryData, selectedHotelData)
     // Redirect the user to the My Trip page
-    navigate("/trips"); // You should adjust the route as per your application's routing configuration
+   // You should adjust the route as per your application's routing configuration
   };
 
   const pushTripToDB = (itineraryData, hotelData) => {
@@ -51,8 +51,7 @@ export function TripSummary(props) {
     };
     console.log(newTrip)
     axios.post('/trips', newTrip)
-    .then(({message}) => console.log(message))
-
+    .then(() => navigate("/trips"))
   }
 
   return (

@@ -10,8 +10,7 @@ import moment from 'moment';
 
 export default function BasicTable(props) {
   const {trips} = props
-  const start_date = moment(trips[0].start_date).utc().format('YYYY-MM-DD, h:mm:ss a')
-  const end_date = moment(trips[0].end_date).utc().format('YYYY-MM-DD, h:mm:ss a')
+  console.log(trips)
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -29,15 +28,15 @@ export default function BasicTable(props) {
         <TableBody>
           {trips.map((trip) => (
             <TableRow
-              key={trip.trip_name}
+              key={trip.trip_id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell component="th" scope="row" align="center">
                 {trip.trip_name}
               </TableCell>
               <TableCell align="center">{trip.city_name}</TableCell>
-              <TableCell align="center">{start_date}</TableCell>
-              <TableCell align="center">{end_date}</TableCell>
+              <TableCell align="center">{moment(trip?.start_date).utc().format('YYYY-MM-DD, h:mm a')}</TableCell>
+              <TableCell align="center">{moment(trip?.end_date).utc().format('YYYY-MM-DD, h:mm a')}</TableCell>
               <TableCell align="center">${trip.flight_price}</TableCell>
               <TableCell align="center">{trip.hotel_name}</TableCell>
               <TableCell align="center">{trip.hotel_price}</TableCell>

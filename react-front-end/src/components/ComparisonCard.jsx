@@ -44,12 +44,12 @@ export default function ComparisonCard(props) {
     <Box sx={{ flexGrow: 1, maxWidth: 752 }}>
       <Grid container spacing={2}>
         <Grid item xs={12} md={6}>
-          <h1>Comparison</h1>
+          <h1>{comparisons?.comparison_name}</h1>
           <Demo>
             <List>
-              {tripList.map((trip) => {
+              {tripList.map((trip, idx) => {
                 return (
-                  <ListItem>
+                  <ListItem key={idx}>
                     <ListItemText
                       primary={trip['trip_name']}
                       secondary={trip['city_name']}

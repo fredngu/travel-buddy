@@ -59,7 +59,7 @@ function LocationSearch(props) {
         onChange={handleInputChange}
         className="input-field"
       />
-      {predictions.length > 0 && (
+      {/* {predictions.length > 0 && (
         <div className="autocomplete-predictions">
           {predictions.map((prediction) => (
             <div
@@ -73,7 +73,7 @@ function LocationSearch(props) {
             </div>
           ))}
         </div>
-      )}
+      )} */}
     </div>
   );
 }
