@@ -76,7 +76,7 @@ From here, you can start working on your project!
 
 As soon as the dependencies are installed, your Express server can serve JSON and static assets (like images) in response to API calls from the React app. You can check on React app, routing plan, etc. and see how this arquitecture was implemented! Any request that isn't handled by React is passed on to the Express server. That means that you can call a route like `/api/travellers` from React using `fetch`, `axios`, or something else, and Express will receive it as though they originated from the Travel Buddy app.
 
-You should install and configure a database driver for Postgres as we have using in this progect or any other database as, MySQL, MongoDB etc to get data interacting and make this app work correctly, you can find scripts used to run queries to create each table anda data used to interact in our application.
+You should install and configure a database driver for Postgres as we have using in this project or any other database as, MySQL, MongoDB etc to get data interacting and make this app work correctly, you can find scripts used to run queries to create each table anda data used to interact in our application.
 
 **License**
 
