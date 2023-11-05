@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 
 function LocationSearch(props) {
   const [location, setLocation] = useState('');
-  const [predictions, setPredictions] = useState([]);
 
   useEffect(() => {
     // Create a function to initialize the autocomplete
@@ -20,8 +19,8 @@ function LocationSearch(props) {
           lat: place.geometry.location.lat(),
           lng: place.geometry.location.lng(),
         });
-        setPredictions([]); // Clear predictions
-      });
+      }
+      );
     }
 
     // Ensure the API is loaded
@@ -29,12 +28,8 @@ function LocationSearch(props) {
       initAutocomplete();
     } else {
       // If the API is not loaded yet, listen for the 'load' event
-      window.addEventListener('load', initAutocomplete);
+      window.addEventListener('google-api-load', initAutocomplete);
     }
-
-    return () => {
-      // Cleanup by removing the script element
-    };
   }, [props]);
 
   const handleInputChange = (event) => {
@@ -45,7 +40,7 @@ function LocationSearch(props) {
     service.getPlacePredictions(
       { input: event.target.value, types: ['(cities)'] },
       (predictions) => {
-        setPredictions(predictions || []);
+        // Do something with predictions if needed
       }
     );
   };
@@ -59,21 +54,6 @@ function LocationSearch(props) {
         onChange={handleInputChange}
         className="input-field"
       />
-      {/* {predictions.length > 0 && (
-        <div className="autocomplete-predictions">
-          {predictions.map((prediction) => (
-            <div
-              key={prediction.place_id}
-              onClick={() => {
-                setLocation(prediction.description);
-                setPredictions([]);
-              }}
-            >
-              {prediction.description}
-            </div>
-          ))}
-        </div>
-      )} */}
     </div>
   );
 }
