@@ -9,10 +9,10 @@
   transition: color 0.3s, text-decoration 0.3s;
 
   &:hover {
-    color: #deb887;
+    color: #ffd700;
   }
 
   &.selected {
-    color: #5f9ea0;
+    color: #00ff00;
   }
 }
