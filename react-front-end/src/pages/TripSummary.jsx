@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import FlightSummary from "../components/FlightSummary";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useItineraryData } from "../components/utils/ItineraryDataContext";
@@ -13,32 +13,22 @@ import axios from "axios";
 export function TripSummary(props) {
   const location = useLocation();
   const navigate = useNavigate();
-  // Use the context to access the itineraryData
   const { state } = useItineraryData();
-  // Access the selected hotel data from the context
   const { selectedHotelData } = useHotelData();
-
-  // Check if itineraryData is available from the location or context
   const itineraryData = location.state?.itineraryData || state.itineraryData;
-
   const areFlightAndHotelSelected = itineraryData && selectedHotelData;
 
-  // Function to handle "One Second Thought" button click
+  const handleFlightSearchClick = () => {
+    navigate("/flight");
+  };
+
   const handleOneSecondThoughtClick = () => {
     // Redirect the user back to the Hotel page
-    navigate("/hotel"); // You should adjust the route as per your application's routing configuration
+    navigate("/hotel");
   };
 
-  const handleFlightSearchClick = () => {
-    // Redirect the user back to the Hotel page
-    navigate("/flight"); // You should adjust the route as per your application's routing configuration
-  };
-
-  // Function to handle "Looks Good" button click
   const handleLooksGoodClick = () => {
     pushTripToDB(itineraryData, selectedHotelData);
-    // Redirect the user to the My Trip page
-    // You should adjust the route as per your application's routing configuration
   };
 
   const pushTripToDB = (itineraryData, hotelData) => {
@@ -82,11 +72,21 @@ export function TripSummary(props) {
           destinationCity={itineraryData.legs[0].destination.city}
         />
       ) : (
-        <h1 className="text-2xl font-semibold text-center mb-4">
-          No flight selected
-        </h1>
+        <div>
+          <h1 className="text-2xl font-semibold text-center mb-4">
+            No flight selected
+          </h1>
+          <Button
+            className="light-purple-button"
+            variant="contained"
+            size="large"
+            onClick={handleFlightSearchClick}
+          >
+            Choose a Flight First
+          </Button>
+        </div>
       )}
-      {selectedHotelData ? (
+      {selectedHotelData && itineraryData ? (
         <div className="flex justify-center items-center">
           <div
             className={`bg-white dark-bg-slate-600 p-6 py-12 rounded-lg shadow-lg transition duration-150 ease-in-out hover:shadow-xl space-y-3 border border-gray-200 mb-4 max-w-3xl`}
@@ -119,21 +119,7 @@ export function TripSummary(props) {
             </div>
           </div>
         </div>
-      ) : (
-        <div>
-          <h1 className="text-2xl font-semibold text-center mb-4">
-            No hotel selected
-          </h1>
-          <Button
-            className="light-purple-button"
-            variant="contained"
-            size="large"
-            onClick={handleFlightSearchClick}
-          >
-            Choose a Flight First
-          </Button>
-        </div>
-      )}
+      ) : null}
       {/* Conditionally render buttons if both flight and hotel are selected */}
       {areFlightAndHotelSelected && (
         <div className="flex justify-between p-4">

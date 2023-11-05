@@ -7,7 +7,7 @@ import LogoutButton from "../api/logout";
 import Profile from "../api/profile";
 import Logo from "../images/TravelBuddyLogo.png";
 import "../styles/NavBar.scss";
-import { mockData as itineraryData } from "../mockData/mockItineraryData";
+//import { mockData as itineraryData } from "../mockData/mockItineraryData";
 import { useAuth0 } from "@auth0/auth0-react";
 
 
@@ -62,7 +62,7 @@ function NavBar() {
           <Button color="inherit">
             <Link
               to="/hotel"
-              state={{ itineraryData: itineraryData }}
+              //state={{ itineraryData: itineraryData }}
               className={`link ${isActiveLink("/hotel") ? "selected" : ""}`}
             >
               Hotel
