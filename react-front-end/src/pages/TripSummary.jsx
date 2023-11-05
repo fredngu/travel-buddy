@@ -13,9 +13,14 @@ import axios from "axios";
 export function TripSummary(props) {
   const location = useLocation();
   const navigate = useNavigate();
+// Use the context to access the itineraryData
   const { state } = useItineraryData();
+// Access the selected hotel data from the context
   const { selectedHotelData } = useHotelData();
+
+  // Check if itineraryData is available from the location or context
   const itineraryData = location.state?.itineraryData || state.itineraryData;
+
   const areFlightAndHotelSelected = itineraryData && selectedHotelData;
 
   const handleFlightSearchClick = () => {
@@ -29,6 +34,8 @@ export function TripSummary(props) {
 
   const handleLooksGoodClick = () => {
     pushTripToDB(itineraryData, selectedHotelData);
+// Redirect the user to the My Trip page
+    // You should adjust the route as per your application's routing configuration
   };
 
   const pushTripToDB = (itineraryData, hotelData) => {
