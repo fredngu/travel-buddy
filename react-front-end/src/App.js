@@ -7,6 +7,7 @@ import { Home } from "./pages/Home";
 import { MyTrips } from "./pages/MyTrips";
 import { Hotel } from "./pages/Hotel";
 import { TripSummary } from "./pages/TripSummary";
+import { MakeComparison } from "./pages/MakeComparison";
 import { ItineraryDataProvider } from "./components/utils/ItineraryDataContext";
 import { HotelDataProvider } from "./components/utils/HotelDataContext";
 
@@ -23,6 +24,7 @@ class App extends Component {
               <Route path="/flight" element={<Flight />} />
               <Route path="/hotel" element={<Hotel />} />
               <Route path="/trip_summary" element={<TripSummary />} />
+              <Route path="/make_comparisons" element={<MakeComparison />} />
             </Routes>
           </div>
           </HotelDataProvider>
