@@ -14,7 +14,8 @@ export function MyTrips() {
 
   useEffect(() => {
     const fetchData = async () => {
-      let traveller_id = 20;
+      let traveller_id = window.sessionStorage.getItem('traveller_id')
+
       await axios.get(`/trips/${traveller_id}`)
       .then(({ data }) => {
         setTrips(data);
@@ -29,7 +30,6 @@ export function MyTrips() {
       });
     };
     fetchData()
-    // let traveller_id = window.sessionStorage.getItem('traveller_id')
     
 
     // let traveller_id = window.sessionStorage.getItem('traveller_id')

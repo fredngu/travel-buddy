@@ -13,6 +13,7 @@
     "axios": "^0.18.1",
     "dayjs": "^1.11.10",
     "google-maps-react": "^2.0.6",
+    "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-places-autocomplete": "^7.3.0",

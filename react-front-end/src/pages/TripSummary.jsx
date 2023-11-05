@@ -4,10 +4,11 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useItineraryData } from "../components/utils/ItineraryDataContext";
 import { useHotelData } from "../components/utils/HotelDataContext";
 import { getPriceRange } from '../components/utils/PriceUtils';
-import { Button, sliderClasses } from "@mui/material";
+import { Button } from "@mui/material";
 import "../styles/TripSummary.scss";
 import tripImage from '../images/trip-summary.jpg';
 import Footer from "../components/Footer"
+import axios from "axios";
 
 export function TripSummary(props) {
   const location = useLocation();
@@ -30,19 +31,29 @@ export function TripSummary(props) {
 
   // Function to handle "Looks Good" button click
   const handleLooksGoodClick = () => {
+    pushTripToDB(itineraryData, selectedHotelData)
     // Redirect the user to the My Trip page
     navigate("/trips"); // You should adjust the route as per your application's routing configuration
   };
 
   const pushTripToDB = (itineraryData, hotelData) => {
-    const hotelPrice = getPriceRange(hotelData.price_level)
-    //itinerary -> destination
-    //hotel -> name + price_level (getPriceRange)
-    console.log(itineraryData)
-    console.log(hotelData)
-  }
+    const price = parseInt(itineraryData.price.raw)
+    const newTrip = {
+      hotel_price: getPriceRange(hotelData.price_level),
+      hotel_name: hotelData.name,
+      traveller_id: window.sessionStorage.getItem('traveller_id'),
+      city_name: itineraryData.legs[0].destination.city,
+      trip_name: `${itineraryData.legs[0].destination.city} Trip`,
+      flight_price: price,
+      start_date: itineraryData.legs[0].departure,
+      end_date: itineraryData.legs[1].arrival,
+      city_image_url: 'image'
+    };
+    console.log(newTrip)
+    axios.post('/trips', newTrip)
+    .then(({message}) => console.log(message))
 
-  pushTripToDB(itineraryData, selectedHotelData)
+  }
 
   return (
     <div className="relative min-h-[100vh] dark:bg-gray-700 dark:text-white">
@@ -86,7 +97,7 @@ export function TripSummary(props) {
           <Button className="light-purple-button" variant="contained" size="large" onClick={handleOneSecondThoughtClick}>
             One Second Thought
           </Button>
-          <Button className="light-purple-button" variant="contained" size="large" onClick={handleLooksGoodClick}>
+          <Button className="light-purple-button" variant="contained" size="large" onClick={() => handleLooksGoodClick()}>
             Looks Good
           </Button>
         </div>
