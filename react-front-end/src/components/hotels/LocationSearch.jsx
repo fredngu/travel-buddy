@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 function LocationSearch(props) {
   const [location, setLocation] = useState('');
+  const [predictions, setPredictions] = useState([]);
 
   useEffect(() => {
     // Create a function to initialize the autocomplete
@@ -19,8 +20,8 @@ function LocationSearch(props) {
           lat: place.geometry.location.lat(),
           lng: place.geometry.location.lng(),
         });
-      }
-      );
+        setPredictions([]); // Clear predictions
+      });
     }
 
     // Ensure the API is loaded
@@ -33,13 +34,22 @@ function LocationSearch(props) {
   }, [props]);
 
   const handleInputChange = (event) => {
-    setLocation(event.target.value);
+    const inputValue = event.target.value;
+    setLocation(inputValue);
 
-    // Fetch predictions when the input changes
-    const service = new window.google.maps.places.AutocompleteService();
-    service.getPlacePredictions(
-      { input: event.target.value, types: ['(cities)'] }
-    );
+    // Check if the input is not empty before fetching predictions
+    if (inputValue.trim() !== '') {
+      const service = new window.google.maps.places.AutocompleteService();
+      service.getPlacePredictions(
+        { input: inputValue, types: ['(cities)'] },
+        (predictions) => {
+          setPredictions(predictions || []);
+        }
+      );
+    } else {
+      // If the input is empty, clear predictions
+      setPredictions([]);
+    }
   };
 
   return (
@@ -51,6 +61,21 @@ function LocationSearch(props) {
         onChange={handleInputChange}
         className="input-field"
       />
+      {predictions.length > 0 && (
+        <div className="autocomplete-predictions">
+          {predictions.map((prediction) => (
+            <div
+              key={prediction.place_id}
+              onClick={() => {
+                setLocation(prediction.description);
+                setPredictions([]);
+              }}
+            >
+              {prediction.description}
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
