@@ -38,10 +38,7 @@ function LocationSearch(props) {
     // Fetch predictions when the input changes
     const service = new window.google.maps.places.AutocompleteService();
     service.getPlacePredictions(
-      { input: event.target.value, types: ['(cities)'] },
-      (predictions) => {
-        // Do something with predictions if needed
-      }
+      { input: event.target.value, types: ['(cities)'] }
     );
   };
 
