@@ -37,14 +37,15 @@ const Demo = styled('div')(({ theme }) => ({
 }));
 
 export default function ComparisonCard(props) {
-  const { comparisons, allTrips } = props;
-  const compareTrips = getComparisonList(comparisons);
+  const { comparison, allTrips } = props;
+  console.log(comparison)
+  const compareTrips = getComparisonList(comparison);
   const tripList = getComparisonTrip(compareTrips, allTrips);
   return (
     <Box sx={{ flexGrow: 1, maxWidth: 752 }}>
       <Grid container spacing={2}>
         <Grid item xs={12} md={6}>
-          <h1>{comparisons?.comparison_name}</h1>
+          <h1>{comparison?.comparison_name}</h1>
           <Demo>
             <List>
               {tripList.map((trip, idx) => {

@@ -75,7 +75,15 @@ function NavBar() {
             >
               Trip Summary
             </Link>
-            </Button>
+          </Button>
+          <Button color="inherit">
+            <Link
+              to="/make_comparisons"
+              className={`link ${isActiveLink("/make_comparisons") ? "selected" : ""}`}
+            >
+              Comparisons
+            </Link>
+          </Button>
               {!isAuthenticated ? (
             <Button color="inherit">
               <LoginButton />

@@ -5,12 +5,15 @@ import TripTable from "../components/TripTable";
 import tripImage from '../images/trips-hero.jpg';
 import Footer from "../components/Footer"
 import ComparisonCard from "../components/ComparisonCard"
+import { useNavigate } from "react-router-dom";
+import { Button } from "@mui/material";
 
 
 export function MyTrips() {
   const [allTrips, setAllTrips] = useState([])
   const [trips, setTrips] = useState([])
   const [comparisons, setComparisons] = useState([])
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,6 +40,12 @@ export function MyTrips() {
   console.log(allTrips)
   console.log(comparisons);
 
+  const handleComparisonClick = () => {
+    navigate('/make_comparisons', {state:{
+      trips
+    }})
+  };
+
   return (
     <div>
       <img src={tripImage} alt="Hotel" className="w-full h-auto" style={{ height: '400px' }}/>
@@ -46,7 +55,14 @@ export function MyTrips() {
         </div>
       <TripTable trips = {trips} />
       {/* <ComparisonTable comparisons = {comparisons} /> */}
-      <ComparisonCard comparisons = {comparisons[0]} allTrips = {allTrips}/>
+      {comparisons.map((comparison)=>{
+        return (
+          <ComparisonCard comparison = {comparison} allTrips = {allTrips}/>
+        )
+      })}
+      <Button onClick={handleComparisonClick} component={'span'} variant={'body2'}>
+        MAKE A COMPARISON
+      </Button>
       <Footer />
     </div>
   )

@@ -81,6 +81,14 @@ App.post('/trips', async (req, res) => {
 
 });
 
+App.post('/comparisons', async (req, res) => {
+  const comparisonData = req.body;
+  console.log(comparisonData)
+  const newComparison = await db.query('INSERT INTO comparison(comparison_name, traveller_id, trip1, trip2, trip3, trip4) VALUES($1, $2, $3, $4, $5, $6) RETURNING *',
+  [comparisonData.comparison_name, comparisonData.traveller_id, comparisonData.trip1, comparisonData.trip2, comparisonData.trip3, comparisonData.trip4]);
+  res.send(newComparison.rows)
+});
+
 App.listen(PORT, () => {
   // eslint-disable-next-line no-console
   console.log(`Express seems to be listening on port ${PORT} so that's pretty good 👍`);
