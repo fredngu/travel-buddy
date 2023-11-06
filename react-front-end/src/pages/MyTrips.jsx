@@ -41,9 +41,10 @@ export function MyTrips() {
   console.log(comparisons);
 
   const handleComparisonClick = () => {
-    navigate("/make_comparisons");
+    navigate('/make_comparisons', {state:{
+      trips
+    }})
   };
-
 
   return (
     <div>
@@ -55,7 +56,7 @@ export function MyTrips() {
       <TripTable trips = {trips} />
       {/* <ComparisonTable comparisons = {comparisons} /> */}
       <ComparisonCard comparisons = {comparisons[0]} allTrips = {allTrips}/>
-      <Button onClick={handleComparisonClick}>
+      <Button onClick={handleComparisonClick} component={'span'} variant={'body2'}>
         MAKE A COMPARISON
       </Button>
       <Footer />
