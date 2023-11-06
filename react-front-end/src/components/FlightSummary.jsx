@@ -13,7 +13,7 @@ export default function FlightSummary({ itineraryData, destinationCity }) {
   };
 
   return (
-    <div className="bg-white dark:bg-slate-600 p-6 rounded-lg shadow-lg transition duration-150 ease-in-out hover:shadow-xl space-y-3 border border-gray-200 mb-4">
+    <div className="bg-white dark:bg-slate-600 p-6 rounded-lg shadow-lg transition duration-150 ease-in-out hover:shadow-xl space-y-3 border border-gray-200 mb-4  mx-auto  max-w-3xl">
       {itineraryData.legs.map((leg, legIndex) => (        
         <div
           key={legIndex}
