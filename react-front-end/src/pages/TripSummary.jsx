@@ -129,23 +129,25 @@ export function TripSummary(props) {
       ) : null}
       {/* Conditionally render buttons if both flight and hotel are selected */}
       {areFlightAndHotelSelected && (
-        <div className="flex justify-between p-4">
-          <Button
-            className="light-purple-button"
-            variant="contained"
-            size="large"
-            onClick={handleOneSecondThoughtClick}
-          >
-            One Second Thought
-          </Button>
-          <Button
-            className="light-purple-button"
-            variant="contained"
-            size="large"
-            onClick={() => handleLooksGoodClick()}
-          >
-            Looks Good
-          </Button>
+        <div className="bottom-4 left-0 right-0 flex justify-center mb-20">
+          <div className="transition duration-150 ease-in-out hover:shadow-xl space-x-3 mb-4 flex items-center">
+            <Button
+              className="light-purple-button"
+              variant="contained"
+              size="large"
+              onClick={handleOneSecondThoughtClick}
+            >
+              One Second Thought
+            </Button>
+            <Button
+              className="light-purple-button"
+              variant="contained"
+              size="large"
+              onClick={() => handleLooksGoodClick()}
+            >
+              Looks Good
+            </Button>
+          </div>
         </div>
       )}
       <Footer />
