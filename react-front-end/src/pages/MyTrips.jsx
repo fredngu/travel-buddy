@@ -55,7 +55,11 @@ export function MyTrips() {
         </div>
       <TripTable trips = {trips} />
       {/* <ComparisonTable comparisons = {comparisons} /> */}
-      <ComparisonCard comparisons = {comparisons[0]} allTrips = {allTrips}/>
+      {comparisons.map((comparison)=>{
+        return (
+          <ComparisonCard comparison = {comparison} allTrips = {allTrips}/>
+        )
+      })}
       <Button onClick={handleComparisonClick} component={'span'} variant={'body2'}>
         MAKE A COMPARISON
       </Button>

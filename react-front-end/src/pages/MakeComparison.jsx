@@ -33,9 +33,11 @@ export function MakeComparison() {
   };
 
   const pushComparisonToDB = (selectedTrips, comparisonName) => {
+    // let traveller_id = window.sessionStorage.getItem('traveller_id')
+    let traveller_id = 20
     const newComparison = {
       comparison_name: comparisonName,
-      traveller_id: window.sessionStorage.getItem('traveller_id'),
+      traveller_id,
       trip1: selectedTrips[0],
       trip2: selectedTrips[1],
       trip3: selectedTrips[2],
