@@ -91,7 +91,7 @@ The main important bit is that the React project has `proxy` set to `localhost:8
 ![home](react-front-end/src/assets/summary-trip-page.jpg)
 
 ### Comparisons Page
-![home](react-front-end/src/asset/comparisons-page.jpg)
+![home](react-front-end/src/assets/comparisons-page.jpg)
 
 ## Next steps
 
