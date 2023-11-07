@@ -5,6 +5,7 @@ import { useLocation, useNavigate } from "react-router-dom"
 import TripComparisonTable from "../components/TripComparisonTable";
 import InputBox from '../components/InputBox';
 import { Button } from "@mui/material";
+import tripImage from '../images/comparisons-hero.jpg';
 import axios from 'axios';
 
 export function MakeComparison() {
@@ -48,6 +49,14 @@ export function MakeComparison() {
   }
   return (
     <div>
+<<<<<<< HEAD
+=======
+    <img src={tripImage} alt="Hotel" className="w-full h-auto" style={{ height: '400px' }}/>
+      <div style={{ background: '#9C27B0' }} className="p-4 text-white">
+        <h1 className="text-4xl font-bold mb-4">Map your memories. Measure your miles.</h1>
+        <p className="text-lg">Visualize your voyages. Data-drive your discoveries.</p>
+      </div>
+>>>>>>> d56b71e33a4ed2d3d26696b49ae53c8d7c91b660
       <Typography component={'span'} variant={'body2'}>
       <TripComparisonTable 
         trips = {location?.state.trips} 
