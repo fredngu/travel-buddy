@@ -1,10 +1,14 @@
 import * as React from 'react';
+import { useState } from 'react';
+import TripTable from './TripTable';
 import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
-import Grid from '@mui/material/Grid';
+import { Typography, IconButton, Dialog, Card, CardHeader, CardContent } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
 
 //retrieve all the trips in the comparison
 function getComparisonList(comparisons) {
@@ -22,11 +26,8 @@ function getComparisonList(comparisons) {
 function getComparisonTrip(trips, allTrips) {
   console.log(trips);
   console.log(allTrips);
-  const tripList = allTrips.map((trip) => {
-    if (trips.includes(trip['trip_id'])) {
-      return trip;
-    }
-    return false
+  const tripList = allTrips.filter((trip) => {
+    return trips.includes(trip['trip_id'])
   });
   console.log(tripList);
   return tripList;
@@ -36,29 +37,35 @@ const Demo = styled('div')(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
 }));
 
-const largeBoxStyle = {
-  width: '300px', // Adjust the width as needed
-  height: '500px', // Adjust the height as needed
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  flexGrow: 1,
-}
 export default function ComparisonCard(props) {
   const { comparison, allTrips } = props;
-  console.log(comparison)
+  console.log(comparison);
   const compareTrips = getComparisonList(comparison);
   const tripList = getComparisonTrip(compareTrips, allTrips);
+  console.log(tripList)
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+
+
   return (
-    <Box sx={ largeBoxStyle }>
-      <Grid container spacing={3}>
-        <Grid item xs={12} md={6}>
-          <h1>{comparison?.comparison_name}</h1>
-          <Demo>
-            <List>
+    <div>
+      <Card>
+        <CardHeader
+          title={comparison?.comparison_name}
+        />
+        <CardContent>
+        <List>
               {tripList.map((trip, idx) => {
                 return (
-                  <ListItem key={idx}>
+                  <ListItem key={idx} fx={'black'}>
                     <ListItemText
                       primary={trip['trip_name']}
                       secondary={trip['city_name']}
@@ -67,9 +74,34 @@ export default function ComparisonCard(props) {
                 );
               })}
             </List>
-          </Demo>
-        </Grid>
-      </Grid>
-    </Box>
+        </CardContent>
+        <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+            <IconButton onClick={handleOpen}>
+              <Typography variant="srOnly">View Details</Typography>
+            </IconButton>
+          </div>
+      </Card>
+
+      <Dialog open={open} onClose={handleClose} sx={{ width: '110vw', height: '100vh' }}>
+        <DialogTitle>
+          {comparison?.comparison_name}
+          <IconButton
+            edge="end"
+            color="inherit"
+            onClick={handleClose}
+            aria-label="close"
+            sx={{ position: 'absolute', top: 0, right: 0 }}
+          >
+            <CloseIcon />
+          </IconButton>
+        </DialogTitle>
+        <DialogContent>
+          <Typography variant="body1">
+            <TripTable trips={tripList} />
+          </Typography>
+        </DialogContent>
+      </Dialog>
+
+    </div>
   );
 }
