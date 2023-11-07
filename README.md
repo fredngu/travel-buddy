@@ -84,9 +84,6 @@ The main important bit is that the React project has `proxy` set to `localhost:8
 ### Hotels Page
 ![home](react-front-end/src/assets/hotels-page.jpg)
 
-### Hotels Page
-![home](react-front-end/src/assets/hotels-page.jpg)
-
 ### Summary Trip Page
 ![home](react-front-end/src/assets/summary-trip-page.jpg)
 
