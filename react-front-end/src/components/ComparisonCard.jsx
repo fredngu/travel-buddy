@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
 import TripTable from './TripTable';
-import { styled } from '@mui/material/styles';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
@@ -32,10 +31,6 @@ function getComparisonTrip(trips, allTrips) {
   console.log(tripList);
   return tripList;
 }
-
-const Demo = styled('div')(({ theme }) => ({
-  backgroundColor: theme.palette.background.paper,
-}));
 
 export default function ComparisonCard(props) {
   const { comparison, allTrips } = props;
