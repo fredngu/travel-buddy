@@ -70,11 +70,34 @@ The main important bit is that the React project has `proxy` set to `localhost:8
 
 5. Open http://localhost:3000 to view in browser
 
+## Final Product
+
+### Home Page
+![home](react-front-end/src/asset/home-page.jpg)
+
+### Trips Page
+![home](react-front-end/src/asset/trips-page.jpg)
+
+### Flights Page
+![home](react-front-end/src/asset/flights-page.jpg)
+
+### Hotels Page
+![home](react-front-end/src/asset/hotels-page.jpg)
+
+### Hotels Page
+![home](react-front-end/src/asset/hotels-page.jpg)
+
+### Summary Trip Page
+![home](react-front-end/src/asset/summary-trip-page.jpg)
+
+### Comparisons Page
+![home](react-front-end/src/asset/comparisons-page.jpg)
+
 ## Next steps
 
-From here, you can start working on your project!
+From here, is just work improving the project!
 
-As soon as the dependencies are installed, your Express server can serve JSON and static assets (like images) in response to API calls from the React app. You can check on React app, routing plan, etc. and see how this arquitecture was implemented! Any request that isn't handled by React is passed on to the Express server. That means that you can call a route like `/api/travellers` from React using `fetch`, `axios`, or something else, and Express will receive it as though they originated from the Travel Buddy app.
+As soon as the dependencies are installed, the Express server can serve JSON and static assets (like images) in response to API calls from the React app. You can check on React app, routing plan, etc. and see how this arquitecture was implemented! Any request that isn't handled by React is passed on to the Express server. That means that you can call a route like `/api/travellers` from React using `fetch`, `axios`, or something else, and Express will receive it as though they originated from the Travel Buddy app.
 
 You should install and configure a database driver for Postgres as we have using in this project or any other database as, MySQL, MongoDB etc to get data interacting and make this app work correctly, you can find scripts used to run queries to create each table anda data used to interact in our application.
 
