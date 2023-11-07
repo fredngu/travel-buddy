@@ -61,7 +61,7 @@ export function MakeComparison() {
         onCheckboxChange={handleChecked}
       />
       <InputBox value={inputValue} onInputChange={handleInputChange} />
-      <Button onClick={handleComparisonClick} component={'span'} variant={'body2'}>
+      <Button onClick={handleComparisonClick} component={'span'} variant="contained">
         SAVE COMPARISON
       </Button>
       </Typography>
