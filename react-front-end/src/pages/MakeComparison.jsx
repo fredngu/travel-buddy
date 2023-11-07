@@ -48,9 +48,7 @@ export function MakeComparison() {
   }
   return (
     <div>
-
       <Typography component={'span'} variant={'body2'}>
-      <h1>Comparisons</h1>
       <TripComparisonTable 
         trips = {location?.state.trips} 
         selectedOptions={selectedOptions}

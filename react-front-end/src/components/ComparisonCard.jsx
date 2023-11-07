@@ -36,14 +36,22 @@ const Demo = styled('div')(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
 }));
 
+const largeBoxStyle = {
+  width: '300px', // Adjust the width as needed
+  height: '500px', // Adjust the height as needed
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  flexGrow: 1,
+}
 export default function ComparisonCard(props) {
   const { comparison, allTrips } = props;
   console.log(comparison)
   const compareTrips = getComparisonList(comparison);
   const tripList = getComparisonTrip(compareTrips, allTrips);
   return (
-    <Box sx={{ flexGrow: 1, maxWidth: 752 }}>
-      <Grid container spacing={2}>
+    <Box sx={ largeBoxStyle }>
+      <Grid container spacing={3}>
         <Grid item xs={12} md={6}>
           <h1>{comparison?.comparison_name}</h1>
           <Demo>
