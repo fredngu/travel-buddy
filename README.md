@@ -89,3 +89,11 @@ Inspiration and resources from:
 * Expedia
 * Unsplash (travel photos)
 * React + Express No-Fluff Boilerplate - LHL
+
+## The team
+
+- Glauber Marques: https://github.com/glaubervilane
+
+- Fred Nguyen: https://github.com/fredngu
+
+- Paul McAllister: https://github.com/pmcall

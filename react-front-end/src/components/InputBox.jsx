@@ -17,7 +17,7 @@ function InputBox({ value, onInputChange }) {
           id="comparisonName"
           value={value}
           onChange={handleInput}
-          className="border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring focus:border-blue-300"
+          className="border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring focus:border-gray-100"
           placeholder="Enter Comparison Name"
         />
       </div>
