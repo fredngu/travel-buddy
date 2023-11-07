@@ -73,22 +73,22 @@ The main important bit is that the React project has `proxy` set to `localhost:8
 ## Final Product
 
 ### Home Page
-![home](react-front-end/src/asset/home-page.jpg)
+![home](react-front-end/src/assets/home-page.jpg)
 
 ### Trips Page
-![home](react-front-end/src/asset/trips-page.jpg)
+![home](react-front-end/src/assets/trips-page.jpg)
 
 ### Flights Page
-![home](react-front-end/src/asset/flights-page.jpg)
+![home](react-front-end/src/assets/flights-page.jpg)
 
 ### Hotels Page
-![home](react-front-end/src/asset/hotels-page.jpg)
+![home](react-front-end/src/assets/hotels-page.jpg)
 
 ### Hotels Page
-![home](react-front-end/src/asset/hotels-page.jpg)
+![home](react-front-end/src/assets/hotels-page.jpg)
 
 ### Summary Trip Page
-![home](react-front-end/src/asset/summary-trip-page.jpg)
+![home](react-front-end/src/assets/summary-trip-page.jpg)
 
 ### Comparisons Page
 ![home](react-front-end/src/asset/comparisons-page.jpg)
