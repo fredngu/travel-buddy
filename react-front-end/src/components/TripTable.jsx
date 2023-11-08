@@ -35,8 +35,8 @@ export default function BasicTable(props) {
                 {trip.trip_name}
               </TableCell>
               <TableCell align="center">{trip.city_name}</TableCell>
-              <TableCell align="center">{moment(trip?.start_date).utc().format('YYYY-MM-DD, h:mm a')}</TableCell>
-              <TableCell align="center">{moment(trip?.end_date).utc().format('YYYY-MM-DD, h:mm a')}</TableCell>
+              <TableCell align="center">{moment(trip?.start_date).utc().format('YYYY-MM-DD,hh:mm a')}</TableCell>
+              <TableCell align="center">{moment(trip?.end_date).utc().format('YYYY-MM-DD,hh:mm a')}</TableCell>
               <TableCell align="center">${trip.flight_price}</TableCell>
               <TableCell align="center">{trip.hotel_name}</TableCell>
               <TableCell align="center">{trip.hotel_price}</TableCell>

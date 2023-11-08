@@ -5,7 +5,7 @@ import TripTable from "../components/TripTable";
 import tripImage from '../images/trips-hero.jpg';
 import Footer from "../components/Footer";
 import ComparisonCard from "../components/ComparisonCard";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { Button } from "@mui/material";
 import { Card } from "@mui/material";
 import { styled } from "@mui/material/styles";
@@ -32,8 +32,8 @@ export function MyTrips() {
 
   useEffect(() => {
     const fetchData = async () => {
-      // let traveller_id = window.sessionStorage.getItem('traveller_id')
-      let traveller_id = 20;
+      let traveller_id = window.sessionStorage.getItem('traveller_id')
+      // let traveller_id = 20;
 
       await axios.get(`/trips/${traveller_id}`)
         .then(({ data }) => {
@@ -90,6 +90,13 @@ export function MyTrips() {
           );
         })}
       </Paper>
+      <PurpleButton variatn="contained" component={'span'} variant={'body2'}>
+        <Link
+          to="/flight"
+        >
+          MAKE A TRIP
+        </Link>
+      </PurpleButton>
       <PurpleButton variatn="contained" onClick={handleComparisonClick} component={'span'} variant={'body2'}>
         MAKE A COMPARISON
       </PurpleButton>
