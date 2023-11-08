@@ -34,8 +34,8 @@ export function MakeComparison() {
   };
 
   const pushComparisonToDB = (selectedTrips, comparisonName) => {
-    // let traveller_id = window.sessionStorage.getItem('traveller_id')
-    let traveller_id = 20
+    let traveller_id = window.sessionStorage.getItem('traveller_id')
+    // let traveller_id = 20
     const newComparison = {
       comparison_name: comparisonName,
       traveller_id,
@@ -51,8 +51,8 @@ export function MakeComparison() {
     <div>
     <img src={tripImage} alt="Hotel" className="w-full h-auto" style={{ height: '400px' }}/>
       <div style={{ background: '#9C27B0' }} className="p-4 text-white">
-        <h1 className="text-4xl font-bold mb-4">Map your memories. Measure your miles.</h1>
-        <p className="text-lg">Visualize your voyages. Data-drive your discoveries.</p>
+      <h1 className="text-5xl font-bold mb-4">Map your memories. Measure your miles.</h1>
+        <p className="text-2xl">Visualize your voyages. Data-drive your discoveries.</p>
       </div>
       <Typography component={'span'} variant={'body2'}>
       <TripComparisonTable 

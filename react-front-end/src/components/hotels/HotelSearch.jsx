@@ -100,8 +100,8 @@ class HotelSearch extends Component {
 
     return (
       <div className="container">
-        <div className="hotelList">
-          <h1 className="text-2xl font-semibold text-center mb-4">Hotels Near location searched</h1>
+        <div className="hotelList" style={{marginTop: "20px"}}>
+          <h1 className="text-3xl font-semibold text-center mb-4">Hotels Near location searched</h1>
           {visibleHotels.map((hotel) => (
             <HotelCard
               key={hotel.place_id}
@@ -120,13 +120,13 @@ class HotelSearch extends Component {
             </div>
           )}
         </div>
-        <div className="mapContainer">
+        <div className="mapContainer" style={{height: '100vh'}}>
           <Map
             google={this.props.google}
             zoom={14}
             initialCenter={this.props.initialCenter}
             onReady={(mapProps, map) => this.setState({ map })}
-            style={{ width: '50%', height: '50vh' }}
+            style={{ width: '50%', height: '850px', marginLeft: '50px', borderRadius: '10px' }}
           >
             {visibleHotels.map((hotel) => {
               const position = {

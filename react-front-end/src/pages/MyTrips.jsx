@@ -5,7 +5,7 @@ import TripTable from "../components/TripTable";
 import tripImage from '../images/trips-hero.jpg';
 import Footer from "../components/Footer";
 import ComparisonCard from "../components/ComparisonCard";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { Button } from "@mui/material";
 import { Card } from "@mui/material";
 import { styled } from "@mui/material/styles";
@@ -32,8 +32,8 @@ export function MyTrips() {
 
   useEffect(() => {
     const fetchData = async () => {
-      // let traveller_id = window.sessionStorage.getItem('traveller_id')
-      let traveller_id = 20;
+      let traveller_id = window.sessionStorage.getItem('traveller_id')
+      // let traveller_id = 20;
 
       await axios.get(`/trips/${traveller_id}`)
         .then(({ data }) => {
@@ -68,8 +68,13 @@ export function MyTrips() {
 
       <img src={tripImage} alt="Hotel" className="w-full h-auto" style={{ height: '400px' }} />
       <div style={{ background: '#9C27B0' }} className="p-4 text-white">
-        <h1 className="text-4xl font-bold mb-4">Get your track</h1>
-        <p className="text-lg">See your achievements and think about what’s next!</p>
+<<<<<<< HEAD
+      <h1 className="text-5xl font-bold mb-4">Get your track</h1>
+        <p className="text-2xl">See your achievements and think about what’s next!</p>
+=======
+        <h1 className="text-4xl font-bold mb-4">View your trips!</h1>
+        <p className="text-lg">See your trips and compare trips!</p>
+>>>>>>> b6660f56076f9c9462e80d797dbc69866b74cbcd
       </div>
       <TripTable trips={trips} />
       <Paper
@@ -90,6 +95,13 @@ export function MyTrips() {
           );
         })}
       </Paper>
+      <PurpleButton variatn="contained" component={'span'} variant={'body2'}>
+        <Link
+          to="/flight"
+        >
+          MAKE A TRIP
+        </Link>
+      </PurpleButton>
       <PurpleButton variatn="contained" onClick={handleComparisonClick} component={'span'} variant={'body2'}>
         MAKE A COMPARISON
       </PurpleButton>

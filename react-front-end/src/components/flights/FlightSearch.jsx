@@ -20,7 +20,7 @@ const FlightSearch = () => {
   };
   const handleOneSecondThoughtClick = () => {
     // Redirect the user back to the Hotel page
-    navigate("/");
+    navigate("/trips");
   };
 
   // Check if a flight itinerary is selected
@@ -35,8 +35,8 @@ const FlightSearch = () => {
     <div className="relative min-h-[100vh] dark:bg-gray-700 dark:text-white">
       <img src={flightImage} alt="Hotel" className="w-full h-auto" style={{ height: '400px' }}/>
         <div style={{ background: '#9C27B0' }} className="p-4 text-white">
-          <h1 className="text-4xl font-bold mb-4">Look for your Flight</h1>
-          <p className="text-lg">Discover the best flight options!</p>
+        <h1 className="text-5xl font-bold mb-4">Look for your Flight</h1>
+          <p className="text-2xl">Discover the best flight options!</p>
         </div>
       <div className="pb-[2.5rem]">
         <div className="md:px-12 ">
@@ -54,7 +54,11 @@ const FlightSearch = () => {
       <div className="bottom-4 left-0 right-0 flex justify-center mb-20">
         <div className="transition duration-150 ease-in-out hover:shadow-xl space-x-3 mb-4 flex items-center">
           <Button className="light-purple-button" variant="contained" size="large" onClick={handleOneSecondThoughtClick}>
-            One Second Thought
+<<<<<<< HEAD
+            Check my previous trips first
+=======
+            On Second Thought
+>>>>>>> b6660f56076f9c9462e80d797dbc69866b74cbcd
           </Button>
           {/* Conditionally render the "Looks Good" button if a flight itinerary is selected */}
           {isFlightSelected && (

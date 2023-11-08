@@ -52,6 +52,35 @@ export default function ComparisonCard(props) {
 
   return (
     <div>
+<<<<<<< HEAD
+      <Card sx={{ fontSize: '1.4rem' }}>
+  <CardHeader
+    title={comparison?.comparison_name}
+    sx={{ fontSize: '1.6rem' }}
+  />
+  <CardContent>
+    <List>
+      {tripList.map((trip, idx) => (
+        <ListItem key={idx}>
+          <ListItemText
+            primary={trip['trip_name']}
+            secondary={trip['city_name']}
+            sx={{ fontSize: '1.4rem' }}
+          />
+        </ListItem>
+      ))}
+    </List>
+  </CardContent>
+  <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+    <IconButton onClick={handleOpen}>
+      <Typography variant="srOnly">
+        View Details
+      </Typography>
+    </IconButton>
+  </div>
+</Card>
+
+=======
       <Card>
         <CardHeader
           title={comparison?.comparison_name}
@@ -72,10 +101,11 @@ export default function ComparisonCard(props) {
         </CardContent>
         <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
             <IconButton onClick={handleOpen}>
-              <Typography variant="srOnly">View Details</Typography>
+              <Typography variant="srOnly">View Comparison</Typography>
             </IconButton>
           </div>
       </Card>
+>>>>>>> b6660f56076f9c9462e80d797dbc69866b74cbcd
 
       <Dialog open={open} onClose={handleClose} sx={{ width: '110vw', height: '100vh' }}>
         <DialogTitle>

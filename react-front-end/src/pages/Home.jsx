@@ -7,6 +7,8 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { useAuth0 } from "@auth0/auth0-react";
+import { Link } from "react-router-dom";
+import { Button } from "@mui/material";
 
 export function Home() {
     const { isAuthenticated } = useAuth0();
@@ -14,10 +16,10 @@ export function Home() {
       <div>
         <img src={heroImage} alt="HeroImage" className="w-full h-auto" style={{ height: '400px' }} />
         <div style={{ background: '#9C27B0' }} className="p-4 text-white">
-          <h1 className="text-4xl font-bold mb-4">Welcome to Travel Buddy</h1>
-          <p className="text-lg">Discover amazing trips and organize your dream vacation today!</p>
+          <h1 className="text-5xl font-bold mb-4">Welcome to Travel Buddy</h1>
+          <p className="text-2xl">Discover amazing trips and organize your dream vacation today!</p>
         </div>
-        {!isAuthenticated && <LoginForm />}
+        {!isAuthenticated && <LoginForm /> }
         <Card variant="outlined" style={{ margin: '20px' }}>
           <CardContent>
             <img src={homeImage} alt=""  className="mx-auto max-w-3/4 h-auto" style={{ height: '400px' }} />
@@ -26,6 +28,13 @@ export function Home() {
             </Typography>
           </CardContent>
         </Card>
+        <Button className="light-purple-button" variant="contained" size="large">
+          <Link
+            to="/trips"
+          >
+            MY TRIPS
+          </Link>
+        </Button>
         <Footer />
       </div>
     )

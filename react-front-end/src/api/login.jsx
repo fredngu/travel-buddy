@@ -5,9 +5,21 @@ import "../styles/NavBar.scss";
 const LoginButton = () => {
   const { loginWithRedirect } = useAuth0();
 
+  const buttonStyle = {
+    backgroundColor: '#9C27B0',
+    color: 'white',
+    padding: '10px 10px',
+    border: 'none',
+    borderRadius: '5px',
+    cursor: 'pointer',
+    margin: '-25px'
+  };
+
   return (
-    <div className="link">
-      <button onClick={() => loginWithRedirect()}>LOG IN</button>
+    <div>
+      <button onClick={() => loginWithRedirect()}  style={buttonStyle}>
+        LOG IN
+      </button>
     </div>
   );
 };
