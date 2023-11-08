@@ -126,7 +126,7 @@ class HotelSearch extends Component {
             zoom={14}
             initialCenter={this.props.initialCenter}
             onReady={(mapProps, map) => this.setState({ map })}
-            style={{ width: '50%', height: '850px', marginLeft: '50px', borderRadius: '10px' }}
+            style={{ maxWidth: '46%', height: '850px', marginLeft: '50px',  borderRadius: '10px' }}
           >
             {visibleHotels.map((hotel) => {
               const position = {
