@@ -54,11 +54,7 @@ const FlightSearch = () => {
       <div className="bottom-4 left-0 right-0 flex justify-center mb-20">
         <div className="transition duration-150 ease-in-out hover:shadow-xl space-x-3 mb-4 flex items-center">
           <Button className="light-purple-button" variant="contained" size="large" onClick={handleOneSecondThoughtClick}>
-<<<<<<< HEAD
             Check my previous trips first
-=======
-            On Second Thought
->>>>>>> b6660f56076f9c9462e80d797dbc69866b74cbcd
           </Button>
           {/* Conditionally render the "Looks Good" button if a flight itinerary is selected */}
           {isFlightSelected && (

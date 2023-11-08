@@ -68,13 +68,8 @@ export function MyTrips() {
 
       <img src={tripImage} alt="Hotel" className="w-full h-auto" style={{ height: '400px' }} />
       <div style={{ background: '#9C27B0' }} className="p-4 text-white">
-<<<<<<< HEAD
       <h1 className="text-5xl font-bold mb-4">Get your track</h1>
         <p className="text-2xl">See your achievements and think about what’s next!</p>
-=======
-        <h1 className="text-4xl font-bold mb-4">View your trips!</h1>
-        <p className="text-lg">See your trips and compare trips!</p>
->>>>>>> b6660f56076f9c9462e80d797dbc69866b74cbcd
       </div>
       <TripTable trips={trips} />
       <Paper
