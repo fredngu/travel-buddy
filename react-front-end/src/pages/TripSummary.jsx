@@ -137,7 +137,7 @@ export function TripSummary(props) {
               size="large"
               onClick={handleOneSecondThoughtClick}
             >
-              One Second Thought
+              On Second Thought
             </Button>
             <Button
               className="light-purple-button"

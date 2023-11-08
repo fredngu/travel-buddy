@@ -72,7 +72,7 @@ export default function ComparisonCard(props) {
         </CardContent>
         <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
             <IconButton onClick={handleOpen}>
-              <Typography variant="srOnly">View Details</Typography>
+              <Typography variant="srOnly">View Comparison</Typography>
             </IconButton>
           </div>
       </Card>
