@@ -21,10 +21,10 @@ export function Hotel() {
       <img src={hotelImage} alt="Hotel" className="w-full h-auto" style={{ height: '400px' }}/>
       <br />
         <div style={{ background: '#9C27B0' }} className="p-4 text-white">
-          <h1 className="text-4xl font-bold mb-4">Plan your stay</h1>
-          <p className="text-lg">Nothing better than relaxing in style</p>
+          <h1 className="text-5xl font-bold mb-4">Plan your stay</h1>
+          <p className="text-2xl">Nothing better than relaxing in style</p>
         </div>
-      <h1 className="text-2xl font-semibold text-center mt-4">Find a good hotel</h1>
+      <h1 className="text-4xl font-semibold text-center mt-4">Find a good hotel</h1>
       <HotelSearch />      
       <Footer />
     </>

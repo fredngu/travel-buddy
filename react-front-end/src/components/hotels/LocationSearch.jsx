@@ -60,6 +60,7 @@ function LocationSearch(props) {
         value={location}
         onChange={handleInputChange}
         className="input-field"
+        style={{ fontSize: '1.5rem' }}
       />
       {predictions.length > 0 && (
         <div className="autocomplete-predictions">

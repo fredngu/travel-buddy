@@ -146,15 +146,16 @@ const Input = ({ setFlightData, setIsLoading }) => {
     <>
     <div className="rounded-b-[1rem] md:rounded-lg md:px-1 md:translate-y-6 ring-1 shadow-3xl ring-slate-900/5">
       <form className=" flex-col items-center py-2">
-        <div className="p-2 text-center text-3xl md:text-5xl"> Flights </div>
+        <div className="p-2 text-center text-3xl md:text-6xl" style={{ marginBottom: '1rem' }}> Flights </div>
           
           {/* trip selector */}
             <select 
-              className="ml-4 dark:bg-slate-500 rounded-lg p-1"
+              className="ml-4 dark:bg-slate-500 rounded-lg p-1 text-3xl"
               value={selectedOption}
+              style={{ border: '1px solid #000' }}
               onChange={handleOptionChange}>
-              <option>Round Trip</option>
-              <option>One Way</option>
+              <option className='text-3xl'>Round Trip</option>
+              <option className='text-3xl'>One Way</option>
             </select>
             
           <div className="flex px-4 py-3 mb-6 justify-center items-center">

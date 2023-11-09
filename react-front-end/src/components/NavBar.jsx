@@ -19,9 +19,10 @@ function NavBar() {
   const isActiveLink = (path) => {
     return location.pathname === path;
   };
+  
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" sx={{ backgroundColor: '#9C27B0' }}>
       <Container>
         <Toolbar>
           <Link to="/" style={{ textDecoration: "none" }}>

@@ -64,12 +64,12 @@ export function TripSummary(props) {
         style={{ height: "400px" }}
       />
       <div style={{ background: "#9C27B0" }} className="p-4 text-white">
-        <h1 className="text-4xl font-bold mb-4">Get your options</h1>
-        <p className="text-lg">Here are your best choices!</p>
+      <h1 className="text-5xl font-bold mb-4">Get your options</h1>
+        <p className="text-2xl">Here are your best choices!</p>
       </div>
       <br />
       {areFlightAndHotelSelected && (
-        <h1 className="text-2xl font-semibold text-center mb-4">
+        <h1 className="text-4xl font-semibold text-center mb-4">
           Your Trip to {itineraryData?.legs[0]?.destination.city}
         </h1>
       )}
