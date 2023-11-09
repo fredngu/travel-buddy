@@ -71,11 +71,27 @@ export default function ComparisonCard(props) {
           </List>
         </CardContent>
         <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-          <IconButton onClick={handleOpen}>
-            <Typography variant="srOnly">
-              View Details
-            </Typography>
-          </IconButton>
+        <IconButton
+        onClick={handleOpen}
+        sx={{
+          backgroundColor: 'purple',
+          '&:hover': {
+            backgroundColor: 'white',
+          },
+        }}
+      >
+        <Typography
+          variant="srOnly"
+          sx={{
+            color: 'white',
+            '&:hover': {
+              color: 'purple',
+            },
+          }}
+        >
+          View Details
+        </Typography>
+      </IconButton>
         </div>
       </Card>
       <Dialog

@@ -45,6 +45,8 @@ In one terminal, `cd` into `react-front-end`. Run `npm install` or `yarn` to ins
 
 In the other terminal, `cd` into `express-back-end`. Run `npm install` or `yarn` to install the dependencies, then `npm start` or `yarn start` to launch the server.
 
+In terminal from Postgres you need to make sure thatyou grant privileges to run the application against the database `GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO new_user;` and `GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO your_user;` and remeber to put you user from Postgres in 'your_user" placeholder.
+
 In the browser, you can click on the button and see the data get loaded.
 
 The main important bit is that the React project has `proxy` set to `localhost:8080` in the `package.json` file, and that the Express app listens to port 8080 in `server.js`. Take a look!
