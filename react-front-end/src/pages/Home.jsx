@@ -14,7 +14,7 @@ export function Home() {
     const { isAuthenticated } = useAuth0();
     return (
       <div>
-        <img src={heroImage} alt="HeroImage" className="w-full h-auto" style={{ height: '400px' }} />
+        <img src={heroImage} alt="HeroImage" className="w-full h-auto" style={{ height: '17vw' }} />
         <div style={{ background: '#9C27B0' }} className="p-4 text-white">
           <h1 className="text-5xl font-bold mb-4">Welcome to Travel Buddy</h1>
           <p className="text-2xl">Discover amazing trips and organize your dream vacation today!</p>
