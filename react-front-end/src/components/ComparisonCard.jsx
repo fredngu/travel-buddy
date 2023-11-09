@@ -101,7 +101,7 @@ export default function ComparisonCard(props) {
         PaperProps={{
           sx: {
             width: '60vw',
-            height: '60vh',
+            height: '90vh',
           },
         }}
       >
