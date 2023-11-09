@@ -1,9 +1,9 @@
 # Travel Buddy
 **A Travel Planner Application**
 
-Welcome to Travel Buddy - your new trip planning buddy! 🗺️
+Welcome to Travel Buddy - your new trip-planning buddy! 🗺️
 
-Travel Buddy allows you to easily search, organize and plan trips from start to finish. Forget spreadsheets and notes, bring your travel plans together in one place!
+Travel Buddy allows you to easily search, organize, and plan trips from start to finish. Forget spreadsheets and notes, bring your travel plans together in one place!
 
 ## Features
 
@@ -45,11 +45,11 @@ In one terminal, `cd` into `react-front-end`. Run `npm install` or `yarn` to ins
 
 In the other terminal, `cd` into `express-back-end`. Run `npm install` or `yarn` to install the dependencies, then `npm start` or `yarn start` to launch the server.
 
-In terminal from Postgres you need to make sure thatyou grant privileges to run the application against the database `GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO new_user;` and `GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO your_user;` and remeber to put you user from Postgres in 'your_user" placeholder.
+In the terminal from Postgres, you need to make sure that you grant privileges to run the application against the database `GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO new_user;` and `GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO your_user;` and remember to put your user name from Postgres in "your_user" placeholder.
 
 In the browser, you can click on the button and see the data get loaded.
 
-The main important bit is that the React project has `proxy` set to `localhost:8080` in the `package.json` file, and that the Express app listens to port 8080 in `server.js`. Take a look!
+The main important bit is that the React project has `proxy` set to `localhost:8080` in the `package.json` file and that the Express app listens to port 8080 in `server.js`. Take a look!
 
 **Installation**
 
@@ -96,9 +96,9 @@ The main important bit is that the React project has `proxy` set to `localhost:8
 
 From here, is just work improving the project!
 
-As soon as the dependencies are installed, the Express server can serve JSON and static assets (like images) in response to API calls from the React app. You can check on React app, routing plan, etc. and see how this arquitecture was implemented! Any request that isn't handled by React is passed on to the Express server. That means that you can call a route like `/api/travellers` from React using `fetch`, `axios`, or something else, and Express will receive it as though they originated from the Travel Buddy app.
+As soon as the dependencies are installed, the Express server can serve JSON and static assets (like images) in response to API calls from the React app. You can check on the React app, routing plan, etc., and see how this architecture was implemented! Any request that isn't handled by React is passed on to the Express server. That means that you can call a route like `/api/travellers` from React using `fetch`, `Axios`, or something else, and Express will receive it as though it originated from the Travel Buddy app.
 
-You should install and configure a database driver for Postgres as we have using in this project or any other database as, MySQL, MongoDB etc to get data interacting and make this app work correctly, you can find scripts used to run queries to create each table anda data used to interact in our application.
+You should install and configure a database driver for Postgres as we have using in this project or any other database such as MySQL, MongoDB, etc to get data interacting and make this app work correctly, you can find scripts used to run queries to create each table and data used to interact in our application.
 
 **License**
 
