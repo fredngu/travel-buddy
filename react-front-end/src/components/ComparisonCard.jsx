@@ -77,7 +77,7 @@ export default function ComparisonCard(props) {
           </div>
       </Card>
 
-      <Dialog open={open} onClose={handleClose} sx={{ width: '110vw', height: '100vh' }}>
+      <Dialog open={open} onClose={handleClose} sx={{ width: '110vw', height: '100vh' }} >
         <DialogTitle>
           {comparison?.comparison_name}
           <IconButton
